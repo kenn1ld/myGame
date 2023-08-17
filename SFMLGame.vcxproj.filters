@@ -52,6 +52,7 @@
     <None Include="Elementals_leaf_ranger_free_v1.0.json">
       <Filter>Resource Files</Filter>
     </None>
+    <None Include="vcpkg.json" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="Elementals_leaf_ranger_free_v1.0.png">
