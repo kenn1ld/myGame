@@ -1,18 +1,5 @@
 {
-  "name": "SFMLGame",
+  "name": "sfmlgame",
   "version-string": "0.1",
-  "dependencies": [
-    {
-      "name": "spdlog",
-      "version": "1.12.0"
-    },
-    {
-      "name": "tmxlite",
-      "version": "1.3.0"
-    },
-    {
-      "name": "nlohmann-json",
-      "version": "3.11.2"
-    }
-  ]
+  "dependencies": [ "spdlog", "tmxlite", "nlohmann-json", "sfml", "gtest" ]
 }
