@@ -1,5 +1,5 @@
 {
   "name": "sfmlgame",
   "version-string": "0.1",
-  "dependencies": [ "spdlog", "tmxlite", "nlohmann-json", "sfml", "gtest" ]
+  "dependencies": [ "spdlog", "tmxlite", "nlohmann-json", "sfml", "gtest", "box2d" ]
 }

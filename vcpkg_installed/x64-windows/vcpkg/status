@@ -225,3 +225,12 @@ Abi: db2d7b5c3d13821ee055db5ee66d5948bd48885d7c85770cea519a5858333cc6
 Description: Simple and fast multimedia library
 Status: install ok installed
 
+Package: gtest
+Version: 1.13.0
+Depends: vcpkg-cmake, vcpkg-cmake-config
+Architecture: x64-windows
+Multi-Arch: same
+Abi: 9860b48743201092ee4e638fa1508958602dbc9f4ee8d8d13366d6706c4abd08
+Description: GoogleTest and GoogleMock testing frameworks
+Status: install ok installed
+

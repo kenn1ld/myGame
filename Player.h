@@ -6,7 +6,7 @@
 #include "GameWorld.h"
 #include "Projectile.h"
 #include <memory>
-
+#include "CollisionHandler.h"
 enum class PlayerState {
     Idle,
     Running,
@@ -81,6 +81,7 @@ private:
     PlayerState currentState = PlayerState::Idle;
     sf::RenderWindow& window;
     GameWorld& gameWorld;
+
 
     void initializeSpriteProperties();
     void initializePhysicsProperties();

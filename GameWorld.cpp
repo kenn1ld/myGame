@@ -35,7 +35,7 @@ void GameWorld::loadTileLayer(const tmx::TileLayer& layer, const tmx::Map& map) 
 				continue;
 			}
 
-			auto& texture = tileTextures[tilesetIndex];
+			const auto& texture = tileTextures[tilesetIndex];
 			sf::Sprite sprite;
 			sprite.setTexture(texture);
 			int tilesPerRow = static_cast<int>(texture.getSize().x) / static_cast<int>(map.getTileSize().x);
@@ -46,8 +46,8 @@ void GameWorld::loadTileLayer(const tmx::TileLayer& layer, const tmx::Map& map) 
 				static_cast<int>(map.getTileSize().y)
 				});
 
-			auto tileWidth = static_cast<unsigned int>(map.getTileSize().x);
-			auto tileHeight = static_cast<unsigned int>(map.getTileSize().y);
+			auto tileWidth = map.getTileSize().x;
+			auto tileHeight = map.getTileSize().y;
 
 			float posX = static_cast<float>(i % mapWidth) * static_cast<float>(tileWidth);
 			float posY = static_cast<float>(i / mapWidth) * static_cast<float>(tileHeight);
@@ -94,7 +94,7 @@ GameWorld::GameWorld(const std::string& tmxPath) {
 	}
 }
 
-void GameWorld::update(float dt, sf::View& view, Player& player) const {
+void GameWorld::update(float dt, sf::View& view, const Player& player) const {
 	// Center the camera on the player
 	sf::Vector2f playerCenter = player.getPosition();
 	view.setCenter(playerCenter);
@@ -156,8 +156,7 @@ bool GameWorld::isGrounded(const sf::FloatRect& rect) const {
 
 	for (const auto& tile : tiles) {
 		if (tile.getGlobalBounds().intersects(movedRect)) {
-			static sf::Clock logClock;
-			if (logClock.getElapsedTime().asSeconds() > 1.0f) {
+			if (static sf::Clock logClock; logClock.getElapsedTime().asSeconds() > 1.0f) {
 				Logger::console->info("Object is grounded on a tile.");
 				logClock.restart();
 			}

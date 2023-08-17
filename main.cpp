@@ -19,15 +19,10 @@ int main() {
 
 		sf::Event event;
 		while (window.pollEvent(event)) {
-			switch (event.type) {
-			case sf::Event::Closed:
+			if (event.type == sf::Event::Closed) {
 				window.close();
-				break;
-				// Handle other events here if needed.
-			default:
-				// Do nothing or handle generically.
-				break;
 			}
+			// Handle other events here if needed.
 		}
 
 		player.handleInput(deltaTime);

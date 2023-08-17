@@ -106,7 +106,7 @@ void Player::initializePhysicsProperties() {
 // ------------------- HITBOX INITIALIZATION -------------------
 
 void Player::initializeHitboxProperties() {
-	hitboxProps.offsetX = -15.0f;
+	hitboxProps.offsetX = -12.0f;
 	hitboxProps.offsetY = 20.0f;
 	hitboxProps.hitboxWidth = 25.0f;
 	hitboxProps.hitboxHeight = 40.0f;
@@ -189,15 +189,14 @@ void Player::spawnProjectile() {
 	sf::Vector2f direction = targetPosition - start_position;
 
 	// Normalize the direction vector
-	float magnitude = std::sqrt(direction.x * direction.x + direction.y * direction.y);
-	if (magnitude != 0) {
+	if (float magnitude = std::sqrt(direction.x * direction.x + direction.y * direction.y); magnitude != 0) {
 		direction /= magnitude;
 	}
 
 	// Spawn the projectile
 	projectiles.emplace_back(std::make_unique<RedArrow>(start_position, targetPosition));
-
 }
+
 
 void Player::updateProjectiles(float dt) {
 	for (auto it = projectiles.begin(); it != projectiles.end();) {
@@ -322,12 +321,19 @@ void Player::updateSpriteDirection() {
 bool Player::updateAnimationFrame([[maybe_unused]] float dt, const std::vector<sf::IntRect>& frames, float currentFrameTime) {
 	if (animation.accumulator >= currentFrameTime) {
 		animation.accumulator -= currentFrameTime;
-		animation.currentFrame = (animation.currentFrame + 1) % frames.size();
+		if (animation.currentFrame == std::numeric_limits<int>::max()) {
+			animation.currentFrame = 0;
+		}
+		else {
+			animation.currentFrame++;
+		}
+		animation.currentFrame %= static_cast<int>(frames.size());
 		sprite.setTextureRect(frames[animation.currentFrame]);
 		return true;
 	}
 	return false;
 }
+
 
 void Player::transitionToState(PlayerState newState) {
 	currentState = newState;

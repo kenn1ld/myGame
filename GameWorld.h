@@ -1,4 +1,5 @@
-#pragma once
+#ifndef GAMEWORLD_H
+#define GAMEWORLD_H
 
 #include <SFML/Graphics.hpp>
 #include <tmxlite/Map.hpp>
@@ -15,8 +16,9 @@ private:
 
 public:
 	explicit GameWorld(const std::string& tmxPath);
-	void update(float dt, sf::View& view, Player& player) const;  // Updated method signature
+	void update(float dt, sf::View& view, const Player& player) const;
 	void draw(sf::RenderWindow& window, const sf::View& view) const;
 	bool checkCollision(const sf::FloatRect& rect) const;
 	bool isGrounded(const sf::FloatRect& rect) const;
 };
+#endif

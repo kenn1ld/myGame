@@ -1,8 +1,9 @@
-Package: gtest
-Version: 1.13.0
+Package: box2d
+Version: 2.4.1
+Port-Version: 3
 Depends: vcpkg-cmake, vcpkg-cmake-config
 Architecture: x64-windows
 Multi-Arch: same
-Abi: 9860b48743201092ee4e638fa1508958602dbc9f4ee8d8d13366d6706c4abd08
-Description: GoogleTest and GoogleMock testing frameworks
+Abi: b2f49ba15b2fb4bdda59d4af3ee83612b91f630077fc7d0340e8aa245418df4a
+Description: An open source C++ engine for simulating rigid bodies in 2D
 Status: install ok installed
