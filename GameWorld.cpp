@@ -79,7 +79,6 @@ GameWorld::GameWorld(const std::string& tmxPath) {
 	tileSize.x = tmxTileSize.x;
 	tileSize.y = tmxTileSize.y;
 
-
 	const auto& tilesets = map.getTilesets();
 	Logger::console->info("Loading tile layer with {} tiles.", tilesets.size());
 	for (const auto& ts : tilesets) {
@@ -106,7 +105,6 @@ const std::vector<sf::Sprite>& GameWorld::getTiles() const {
 const CollisionHandler& GameWorld::getCollisionHandler() const {
 	return collisionHandler;
 }
-
 
 void GameWorld::update(float dt, sf::View& view, const Player& player) const {
 	// Center the camera on the player
@@ -203,12 +201,11 @@ std::list<sf::Vector2i> GameWorld::findPath(const sf::Vector2i& start, const sf:
 
 GameWorld::AStar::AStar(const GameWorld& world) : world(world) {}
 
-
-std::list<sf::Vector2i> GameWorld::AStar::findPath(const sf::Vector2i& start, const sf::Vector2i& goal) {
+std::list<sf::Vector2i> GameWorld::AStar::findPath(const sf::Vector2i& start, const sf::Vector2i& goal) const {
 	NodeList openList, closedList;
 	auto startNode = std::make_unique<Node>(start.x, start.y);
 	auto goalNode = std::make_unique<Node>(goal.x, goal.y);
-	openList.push_back(std::move(startNode));
+	openList.emplace_back(std::move(startNode));
 
 	while (!openList.empty()) {
 		auto iter = std::min_element(openList.begin(), openList.end(), [](const auto& a, const auto& b) {
@@ -219,10 +216,10 @@ std::list<sf::Vector2i> GameWorld::AStar::findPath(const sf::Vector2i& start, co
 
 		if (currentNode->x == goalNode->x && currentNode->y == goalNode->y) {
 			std::list<sf::Vector2i> path = reconstructPath(currentNode);
-			return path;  // The cleanup of nodes is automatic due to unique_ptr
+			return path;
 		}
 
-		closedList.push_back(std::move(*iter));
+		closedList.emplace_back(std::move(*iter));
 		openList.erase(iter);
 
 		NodeList successors = getSuccessors(currentNode);
@@ -232,7 +229,10 @@ std::list<sf::Vector2i> GameWorld::AStar::findPath(const sf::Vector2i& start, co
 				continue;
 			}
 
-			successor->heuristic = std::abs(successor->x - goalNode->x) + std::abs(successor->y - goalNode->y);
+			float deltaX = static_cast<float>(successor->x) - static_cast<float>(goalNode->x);
+			float deltaY = static_cast<float>(successor->y) - static_cast<float>(goalNode->y);
+			successor->heuristic = std::abs(deltaX) + std::abs(deltaY);
+
 			float tempCost = currentNode->cost + 1;
 
 			if (!contains(openList, successor->x, successor->y) || tempCost < successor->cost) {
@@ -240,16 +240,16 @@ std::list<sf::Vector2i> GameWorld::AStar::findPath(const sf::Vector2i& start, co
 				successor->cost = tempCost;
 
 				if (!contains(openList, successor->x, successor->y)) {
-					openList.push_back(std::move(successor));
+					openList.emplace_back(std::move(successor));
 				}
 			}
 		}
 	}
 
-	return {};  // Return an empty path if no path is found
+	return {};
 }
 
-GameWorld::AStar::NodeList GameWorld::AStar::getSuccessors(Node* node) {
+GameWorld::AStar::NodeList GameWorld::AStar::getSuccessors(Node* node) const {
 	NodeList successors;
 	std::vector<sf::Vector2i> moves = { {0, -1}, {0, 1}, {-1, 0}, {1, 0} };
 
@@ -258,20 +258,20 @@ GameWorld::AStar::NodeList GameWorld::AStar::getSuccessors(Node* node) {
 		int newY = node->y + move.y;
 
 		if (world.isWalkable(newX, newY)) {
-			successors.push_back(std::make_unique<Node>(newX, newY));
+			successors.emplace_back(std::make_unique<Node>(newX, newY));
 		}
 	}
 
 	return successors;
 }
 
-bool GameWorld::AStar::contains(const NodeList& list, int x, int y) {
+bool GameWorld::AStar::contains(const NodeList& list, int x, int y) const {
 	return std::find_if(list.begin(), list.end(), [x, y](const auto& node) {
 		return node->x == x && node->y == y;
 		}) != list.end();
 }
 
-std::list<sf::Vector2i> GameWorld::AStar::reconstructPath(Node* node) {
+std::list<sf::Vector2i> GameWorld::AStar::reconstructPath(Node* node) const {
 	std::list<sf::Vector2i> path;
 	while (node) {
 		path.push_front({ node->x, node->y });

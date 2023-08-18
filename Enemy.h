@@ -7,38 +7,38 @@
 #include "GameWorld.h"
 class Enemy {
 protected:
-    sf::Sprite sprite;
-    float health;
-    std::vector<Attack> attacks;  // List of attacks the enemy has
+	sf::Sprite sprite;
+	float health;
+	std::vector<Attack> attacks;  // List of attacks the enemy has
 
-    // AI states
-    enum class EnemyState {
-        Idle,
-        Patrol,
-        Chase,
-        Attack,
-        Flee
-    };
+	// AI states
+	enum class EnemyState {
+		Idle,
+		Patrol,
+		Chase,
+		Attack,
+		Flee
+	};
 
-    EnemyState currentState = EnemyState::Idle;
+	EnemyState currentState = EnemyState::Idle;
 
 public:
-    virtual ~Enemy() = default;
+	virtual ~Enemy() = default;
 
-    virtual void update(float dt, const GameWorld& world) = 0;
-    virtual void draw(sf::RenderWindow& window) = 0;
-    virtual void takeDamage(float damageAmount);
+	virtual void update(float dt, const GameWorld& world) = 0;
+	virtual void draw(sf::RenderWindow& window) = 0;
+	virtual void takeDamage(float damageAmount);
 
-    // Attack methods
-    void addAttack(const Attack& attack) { attacks.push_back(attack); }
-    void performAttack(size_t index);
+	// Attack methods
+	void addAttack(const Attack& attack) { attacks.push_back(attack); }
+	void performAttack(size_t index);
 
-    // Base AI logic (can be overridden)
-    virtual void handleIdle(float dt);
-    virtual void handlePatrol(float dt);
-    virtual void handleChase(float dt, const sf::Vector2f& playerPosition, const GameWorld& world);
-    virtual void handleAttack(float dt);
-    virtual void handleFlee(float dt);
+	// Base AI logic (can be overridden)
+	virtual void handleIdle(float dt);
+	virtual void handlePatrol(float dt);
+	virtual void handleChase(float dt, const sf::Vector2f& playerPosition, const GameWorld& world);
+	virtual void handleAttack(float dt);
+	virtual void handleFlee(float dt);
 };
 
 #endif

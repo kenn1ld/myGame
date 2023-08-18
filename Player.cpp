@@ -197,12 +197,11 @@ void Player::spawnProjectile() {
 	projectiles.emplace_back(std::make_unique<RedArrow>(start_position, targetPosition));
 }
 
-
 void Player::updateProjectiles(float dt) {
 	for (auto it = projectiles.begin(); it != projectiles.end();) {
 		(*it)->update(dt);  // Dereference the unique_ptr to access the update method
 
-		if (this -> gameWorld.checkCollision((*it)->getHitbox()) && !(*it)->isStuck) {
+		if (this->gameWorld.checkCollision((*it)->getHitbox()) && !(*it)->isStuck) {
 			// Handle collision
 			Logger::console->info("Projectile collided with a tile.");
 			(*it)->isStuck = true;
@@ -224,8 +223,6 @@ void Player::updateProjectiles(float dt) {
 		}
 	}
 }
-
-
 
 void Player::handleMovementInput(float dt) {
 	float controlFactor = gameWorld.isGrounded(hitboxProps.hitbox) ? 1.0f : physics.airControl;
@@ -350,7 +347,6 @@ bool Player::updateAnimationFrame([[maybe_unused]] float dt, const std::vector<s
 	return false;
 }
 
-
 void Player::transitionToState(PlayerState newState) {
 	currentState = newState;
 	animation.currentFrame = 0;
@@ -385,7 +381,15 @@ void Player::updateAnimation(float dt) {
 	case PlayerState::Atk2:
 		handleAtk2State(dt);
 		break;
+
 		// ... [and similar code for the rest of the animations]
+
+	default:
+		// Handle the default case here. This could involve logging an error,
+		// throwing an exception, or falling back to a default behavior.
+		// For demonstration, I'm just printing an error message.
+		Logger::console->error("Unhandled PlayerState in switch statement!");
+		break;
 	}
 }
 
@@ -416,7 +420,6 @@ void Player::handleJ_DownState(float dt) {
 	}
 }
 
-
 void Player::handleLandingState(float dt) {
 	if (updateAnimationFrame(dt, animation.landingFrames, animation.frameTime) && animation.currentFrame == animation.landingFrames.size() - 1) {
 		transitionToState(PlayerState::Idle);
@@ -439,7 +442,6 @@ void Player::handleAtk2State(float dt) {
 		}
 	}
 }
-
 
 sf::Vector2f Player::getPosition() const {
 	return sprite.getPosition();
