@@ -198,10 +198,24 @@ void Player::spawnProjectile() {
 }
 
 
-void Player::updateProjectiles(float dt) {
+void Player::updateProjectiles(float dt, GameWorld& gameWorld) {
 	for (auto it = projectiles.begin(); it != projectiles.end();) {
 		(*it)->update(dt);  // Dereference the unique_ptr to access the update method
-		if (!(*it)->isInsideScreen(window)) {
+
+		if (this -> gameWorld.checkCollision((*it)->getHitbox()) && !(*it)->isStuck) {
+			// Handle collision
+			Logger::console->info("Projectile collided with a tile.");
+			(*it)->isStuck = true;
+			(*it)->stuckTime.restart();
+			++it;
+			continue; // continue to the next projectile without erasing
+		}
+
+		if ((*it)->isStuck && (*it)->stuckTime.getElapsedTime().asSeconds() > 10.0f) {
+			// If the projectile is stuck for more than 10 seconds, erase it
+			it = projectiles.erase(it);
+		}
+		else if (!(*it)->isInsideScreen(window)) {
 			Logger::console->info("Deleting projectile outside the view.");
 			it = projectiles.erase(it);
 		}
@@ -210,6 +224,8 @@ void Player::updateProjectiles(float dt) {
 		}
 	}
 }
+
+
 
 void Player::handleMovementInput(float dt) {
 	float controlFactor = gameWorld.isGrounded(hitboxProps.hitbox) ? 1.0f : physics.airControl;

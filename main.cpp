@@ -14,33 +14,33 @@ int main() {
 
 	sf::Clock clock;
 
-	while (window.isOpen()) {
-		float deltaTime = clock.restart().asSeconds();
+    while (window.isOpen()) {
+        float deltaTime = clock.restart().asSeconds();
 
-		sf::Event event;
-		while (window.pollEvent(event)) {
-			if (event.type == sf::Event::Closed) {
-				window.close();
-			}
-			// Handle other events here if needed.
-		}
+        sf::Event event;
+        while (window.pollEvent(event)) {
+            if (event.type == sf::Event::Closed) {
+                window.close();
+            }
+            // Handle other events here if needed.
+        }
 
-		player.handleInput(deltaTime);
-		player.updateProjectiles(deltaTime);
+        player.handleInput(deltaTime);
+        player.updateProjectiles(deltaTime, world);  // Pass the GameWorld reference here
 
-		// Zoom in by modifying the view size
-		float zoomFactor = 0.3f; // Adjust the zoom factor as needed
-		cameraView.setSize(static_cast<float>(window.getSize().x) * zoomFactor,
-			static_cast<float>(window.getSize().y) * zoomFactor);
+        // Zoom in by modifying the view size
+        float zoomFactor = 0.4f; // Adjust the zoom factor as needed
+        cameraView.setSize(static_cast<float>(window.getSize().x) * zoomFactor,
+            static_cast<float>(window.getSize().y) * zoomFactor);
 
-		world.update(deltaTime, cameraView, player);
+        world.update(deltaTime, cameraView, player);
 
-		window.clear(sf::Color::Black);
-		window.setView(cameraView);
-		world.draw(window, cameraView);
-		player.draw(window);
-		window.display();
-	}
+        window.clear(sf::Color::Black);
+        window.setView(cameraView);
+        world.draw(window, cameraView);
+        player.draw(window);
+        window.display();
+    }
 
-	return 0;
+    return 0;
 }

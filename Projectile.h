@@ -4,20 +4,30 @@
 #include <SFML/Graphics.hpp>
 
 class Projectile {
-private:  // Change the access specifier here
+private:
     sf::RectangleShape shape;
     float speed;
     sf::Vector2f direction;
     sf::VertexArray directionLine;
-
+    float initialVerticalSpeed;
     virtual void initializeAttributes() = 0;
 
-protected: // Provide protected accessors for derived classes
+protected:
     sf::RectangleShape& getShape() { return shape; }
     const sf::RectangleShape& getShape() const { return shape; }
     float getSpeed() const { return speed; }
     const sf::Vector2f& getDirection() const { return direction; }
     sf::VertexArray& getDirectionLine() { return directionLine; }
+    sf::FloatRect hitbox;
+
+    // Physics attributes
+    struct Physics {
+        float verticalVelocity = 0.0f;
+        float drag = 0.01f;
+        float gravity = 500.0f;
+        float restitution = 0.5f;
+        float terminalVelocity = 400.0f;
+    } physics;
 
 public:
     virtual ~Projectile() = default;
@@ -25,6 +35,9 @@ public:
     virtual void update(float dt);
     virtual void draw(sf::RenderWindow& window) const;
     virtual bool isInsideScreen(const sf::RenderWindow& window) const;
+    const sf::FloatRect& getHitbox() const { return hitbox; }
+    bool isStuck = false;
+    sf::Clock stuckTime;
 };
 
 class GreenArrow : public Projectile {

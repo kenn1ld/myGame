@@ -142,7 +142,7 @@ void GameWorld::draw(sf::RenderWindow& window, const sf::View& view) const {
 
 bool GameWorld::checkCollision(const sf::FloatRect& rect) const {
 	for (const auto& tile : tiles) {
-		if (tile.getGlobalBounds().intersects(rect)) {
+		if (collisionHandler.checkCollision(tile.getGlobalBounds(), rect)) {
 			Logger::console->info("Collision detected with tile.");
 			return true;
 		}
@@ -152,10 +152,10 @@ bool GameWorld::checkCollision(const sf::FloatRect& rect) const {
 
 bool GameWorld::isGrounded(const sf::FloatRect& rect) const {
 	sf::FloatRect movedRect = rect;
-	movedRect.top += 1.0f; // Small delta to check just below the player
+	movedRect.top += 1.0f;  // Small delta to check just below the player
 
 	for (const auto& tile : tiles) {
-		if (tile.getGlobalBounds().intersects(movedRect)) {
+		if (collisionHandler.checkCollision(tile.getGlobalBounds(), movedRect)) {
 			if (static sf::Clock logClock; logClock.getElapsedTime().asSeconds() > 1.0f) {
 				Logger::console->info("Object is grounded on a tile.");
 				logClock.restart();

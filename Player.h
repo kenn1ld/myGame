@@ -112,7 +112,7 @@ public:
     sf::Vector2f getPosition() const;
     void draw(sf::RenderWindow& window) const;
     const sf::Sprite& getSprite() const;
-    void updateProjectiles(float dt);
+    void updateProjectiles(float dt, GameWorld& gameWorld);
     sf::Vector2f mousePosition;
 };
 
