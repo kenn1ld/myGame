@@ -94,6 +94,15 @@ GameWorld::GameWorld(const std::string& tmxPath) {
 	}
 }
 
+const std::vector<sf::Sprite>& GameWorld::getTiles() const {
+	return tiles;
+}
+
+const CollisionHandler& GameWorld::getCollisionHandler() const {
+	return collisionHandler;
+}
+
+
 void GameWorld::update(float dt, sf::View& view, const Player& player) const {
 	// Center the camera on the player
 	sf::Vector2f playerCenter = player.getPosition();

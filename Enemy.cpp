@@ -21,7 +21,7 @@ void Enemy::handlePatrol(float dt) {
     // Base implementation of patrol behavior
 }
 
-void Enemy::handleChase(float dt) {
+void Enemy::handleChase(float dt, const sf::Vector2f& playerPosition, const GameWorld& world) {
     // Base implementation of chase behavior
 }
 

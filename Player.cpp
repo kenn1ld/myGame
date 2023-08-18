@@ -198,7 +198,7 @@ void Player::spawnProjectile() {
 }
 
 
-void Player::updateProjectiles(float dt, GameWorld& gameWorld) {
+void Player::updateProjectiles(float dt) {
 	for (auto it = projectiles.begin(); it != projectiles.end();) {
 		(*it)->update(dt);  // Dereference the unique_ptr to access the update method
 

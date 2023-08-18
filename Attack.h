@@ -8,7 +8,7 @@ class Attack {
     float damage;
 
 public:
-    Attack(std::string n, float d);
+    Attack(const std::string& n, float d); // note the change here
 
     void execute();
     std::string getName() const;

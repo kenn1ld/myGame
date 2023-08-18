@@ -4,7 +4,7 @@
 #include <SFML/Graphics.hpp>
 #include <vector>
 #include "Attack.h"  // Include the Attack class
-
+#include "GameWorld.h"
 class Enemy {
 protected:
     sf::Sprite sprite;
@@ -25,7 +25,7 @@ protected:
 public:
     virtual ~Enemy() = default;
 
-    virtual void update(float dt) = 0;
+    virtual void update(float dt, const GameWorld& world) = 0;
     virtual void draw(sf::RenderWindow& window) = 0;
     virtual void takeDamage(float damageAmount);
 
@@ -36,7 +36,7 @@ public:
     // Base AI logic (can be overridden)
     virtual void handleIdle(float dt);
     virtual void handlePatrol(float dt);
-    virtual void handleChase(float dt);
+    virtual void handleChase(float dt, const sf::Vector2f& playerPosition, const GameWorld& world);
     virtual void handleAttack(float dt);
     virtual void handleFlee(float dt);
 };

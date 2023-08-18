@@ -23,5 +23,8 @@ public:
     void draw(sf::RenderWindow& window, const sf::View& view) const;
     bool checkCollision(const sf::FloatRect& rect) const;
     bool isGrounded(const sf::FloatRect& rect) const;
+    const std::vector<sf::Sprite>& getTiles() const;
+    const CollisionHandler& getCollisionHandler() const;
+
 };
 #endif
