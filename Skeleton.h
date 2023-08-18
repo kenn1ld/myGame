@@ -19,6 +19,7 @@ private:
 
     sf::RectangleShape sprite;
     sf::RectangleShape hitbox;
+    sf::RectangleShape aiVisionRect;
     bool isGrounded;  // Indicates if the skeleton is on the ground
 
     std::unique_ptr<AIStrategy> aiStrategy;  // Current AI strategy
