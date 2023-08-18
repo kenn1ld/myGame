@@ -11,7 +11,7 @@ public:
     bool checkCollision(const sf::FloatRect& rect1, const sf::FloatRect& rect2) const;
 
     // Resolve the collision by adjusting the position of the first rectangle
-    void resolveCollision(sf::FloatRect& rect1, const sf::FloatRect& rect2) const;
+    void resolveCollision(sf::FloatRect& rect1, const sf::FloatRect& rect2, const sf::Vector2f& movementDirection) const;
 };
 
 #endif // COLLISION_HANDLER_H

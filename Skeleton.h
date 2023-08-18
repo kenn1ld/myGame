@@ -1,5 +1,3 @@
-// Skeleton.h
-
 #ifndef SKELETON_H
 #define SKELETON_H
 
@@ -7,14 +5,21 @@
 #include "AIStrategy.h"
 #include <memory>
 #include "GameWorld.h"
+
 class AIStrategy;
 
 class Skeleton : public Enemy {
 private:
     sf::Vector2f velocity;
     static constexpr float GRAVITY = 9.81f;  // Gravity constant
+    static constexpr float AIR_RESISTANCE = 0.01f;  // Air resistance coefficient
+    static constexpr float FRICTION = 0.1f;  // Friction coefficient on the ground
+    static constexpr float WEIGHT = 70.0f;  // Weight of the skeleton in kg
+    static constexpr float JUMP_FORCE = 500.0f;  // Jump force applied upwards
+
     sf::RectangleShape sprite;
     sf::RectangleShape hitbox;
+    bool isGrounded;  // Indicates if the skeleton is on the ground
 
     std::unique_ptr<AIStrategy> aiStrategy;  // Current AI strategy
 
@@ -23,11 +28,11 @@ public:
     void update(float dt, const GameWorld& world) override;
     void draw(sf::RenderWindow& window) override;
     void updateAI(float dt, const sf::Vector2f& playerPosition, const GameWorld& world);
-    // Override the base AI logic
     void handleChase(float dt, const sf::Vector2f& playerPosition, const GameWorld& world) override;
 
     void setStrategy(std::unique_ptr<AIStrategy> strategy);
     void moveAndHandleCollisions(float dt, const GameWorld& world);
+    void jump();  // New jump function
 };
 
 #endif

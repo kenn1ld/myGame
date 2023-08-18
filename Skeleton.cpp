@@ -18,45 +18,83 @@ Skeleton::Skeleton() {
 
 
 
+void Skeleton::update(float dt, const GameWorld& world) {
+    // Apply gravity to the vertical velocity
+    velocity.y += GRAVITY * WEIGHT * dt;
+
+    // Check if grounded
+    isGrounded = world.isGrounded(hitbox.getGlobalBounds());
+    if (isGrounded) {
+        velocity.y = 0;  // Stop vertical movement if on the ground
+        velocity.x *= (1 - FRICTION);  // Apply friction if grounded
+    }
+    else {
+        // Apply air resistance if not grounded
+        velocity.y *= (1 - AIR_RESISTANCE);
+        velocity.x *= (1 - AIR_RESISTANCE);
+    }
+
+    moveAndHandleCollisions(dt, world);
+}
+
 void Skeleton::moveAndHandleCollisions(float dt, const GameWorld& world) {
-    // Update the skeleton's position based on its velocity
-    sprite.move(velocity * dt);
+    // Handle horizontal movement
+    sf::Vector2f horizontalPredictedPosition = sprite.getPosition() + sf::Vector2f(velocity.x * dt, 0);
+    hitbox.setPosition(horizontalPredictedPosition);
 
-    // Update hitbox 
-    hitbox.setPosition(sprite.getPosition());
-
-    // Check for collisions with tiles
-    sf::FloatRect bounds = hitbox.getGlobalBounds();
-    if (world.checkCollision(bounds)) {
+    while (true) {
+        bool collisionDetected = false;
+        sf::FloatRect hitboxBounds = hitbox.getGlobalBounds();
         for (const auto& tile : world.getTiles()) {
-            if (world.getCollisionHandler().checkCollision(tile.getGlobalBounds(), bounds)) {
-                sf::FloatRect oldBounds = bounds;
-                world.getCollisionHandler().resolveCollision(bounds, tile.getGlobalBounds());
-
-                // Adjust velocities based on the collision resolution
-                if (oldBounds.left != bounds.left) {
-                    velocity.x = 0;
-                }
-                if (oldBounds.top != bounds.top) {
-                    velocity.y = 0;
-                }
-                sprite.setPosition(hitbox.getPosition());
+            if (world.getCollisionHandler().checkCollision(hitboxBounds, tile.getGlobalBounds())) {
+                collisionDetected = true;
+                world.getCollisionHandler().resolveCollision(hitboxBounds, tile.getGlobalBounds(), sf::Vector2f(velocity.x, 0));
+                hitbox.setPosition(hitbox.getPosition() - sf::Vector2f(velocity.x * dt * 0.1f, 0));
+                horizontalPredictedPosition = hitbox.getPosition();
             }
+        }
+        if (!collisionDetected) break;
+        if (std::abs(velocity.x) < 0.1f) {
+            velocity.x = 0;
+            break;
         }
     }
 
-    // Check if grounded
-    if (world.isGrounded(hitbox.getGlobalBounds())) {
-        velocity.y = 0;  // Stop vertical movement if on the ground
+    // Handle vertical movement based on the updated hitbox's position after horizontal movement
+    sf::Vector2f verticalPredictedPosition = hitbox.getPosition() + sf::Vector2f(0, velocity.y * dt);
+    hitbox.setPosition(verticalPredictedPosition);
+
+    while (true) {
+        bool collisionDetected = false;
+        sf::FloatRect hitboxBounds = hitbox.getGlobalBounds();
+        for (const auto& tile : world.getTiles()) {
+            if (world.getCollisionHandler().checkCollision(hitboxBounds, tile.getGlobalBounds())) {
+                collisionDetected = true;
+                world.getCollisionHandler().resolveCollision(hitboxBounds, tile.getGlobalBounds(), sf::Vector2f(0, velocity.y));
+                hitbox.setPosition(hitbox.getPosition() - sf::Vector2f(0, velocity.y * dt * 0.1f));
+                verticalPredictedPosition = hitbox.getPosition();
+            }
+        }
+        if (!collisionDetected) break;
+        if (std::abs(velocity.y) < 0.1f) {
+            velocity.y = 0;
+            break;
+        }
     }
+
+    // Set the sprite's position to match the corrected hitbox's position
+    sprite.setPosition(hitbox.getPosition());
 }
 
 
-void Skeleton::update(float dt, const GameWorld& world) {
-    // Apply gravity to the vertical velocity
-    velocity.y += GRAVITY * dt;
 
-    moveAndHandleCollisions(dt, world);
+
+
+
+void Skeleton::jump() {
+    if (isGrounded) {
+        velocity.y -= JUMP_FORCE;
+    }
 }
 
 void Skeleton::handleChase(float dt, const sf::Vector2f& playerPosition, const GameWorld& world) {
