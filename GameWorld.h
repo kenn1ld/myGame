@@ -41,7 +41,7 @@ private:
 
 		using NodeList = std::vector<std::unique_ptr<Node>>;
 		const GameWorld& world;
-		NodeList getSuccessors(Node* node) const;
+		NodeList getSuccessors(const Node* node) const;
 		bool contains(const NodeList& list, int x, int y) const;
 		std::list<sf::Vector2i> reconstructPath(Node* node) const;
 	};

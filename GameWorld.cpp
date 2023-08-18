@@ -3,6 +3,7 @@
 #include <spdlog/spdlog.h>
 #include <spdlog/sinks/stdout_color_sinks.h>
 #include "Logger.h"
+#include <algorithm>
 
 void GameWorld::loadTileLayer(const tmx::TileLayer& layer, const tmx::Map& map) {
 	const auto& tilesets = map.getTilesets();
@@ -75,7 +76,7 @@ GameWorld::GameWorld(const std::string& tmxPath) {
 		// handle error
 	}
 
-	auto tmxTileSize = map.getTileSize();
+	auto& tmxTileSize = map.getTileSize();
 	tileSize.x = tmxTileSize.x;
 	tileSize.y = tmxTileSize.y;
 
@@ -180,13 +181,12 @@ bool GameWorld::isGrounded(const sf::FloatRect& rect) const {
 
 bool GameWorld::isWalkable(int x, int y) const {
 	sf::Vector2f position(static_cast<float>(x * tileSize.x), static_cast<float>(y * tileSize.y));
-	for (const auto& tile : tiles) {
-		if (tile.getGlobalBounds().contains(position)) {
-			return false;  // This assumes tiles are obstacles
-		}
-	}
-	return true;
+
+	return std::none_of(tiles.begin(), tiles.end(), [&position](const auto& tile) {
+		return tile.getGlobalBounds().contains(position);
+		});
 }
+
 
 sf::Vector2u GameWorld::getTileSize() const {
 	return tileSize;
@@ -202,7 +202,8 @@ std::list<sf::Vector2i> GameWorld::findPath(const sf::Vector2i& start, const sf:
 GameWorld::AStar::AStar(const GameWorld& world) : world(world) {}
 
 std::list<sf::Vector2i> GameWorld::AStar::findPath(const sf::Vector2i& start, const sf::Vector2i& goal) const {
-	NodeList openList, closedList;
+	NodeList openList;
+	NodeList closedList;
 	auto startNode = std::make_unique<Node>(start.x, start.y);
 	auto goalNode = std::make_unique<Node>(goal.x, goal.y);
 	openList.emplace_back(std::move(startNode));
@@ -249,7 +250,7 @@ std::list<sf::Vector2i> GameWorld::AStar::findPath(const sf::Vector2i& start, co
 	return {};
 }
 
-GameWorld::AStar::NodeList GameWorld::AStar::getSuccessors(Node* node) const {
+GameWorld::AStar::NodeList GameWorld::AStar::getSuccessors(const Node* node) const {
 	NodeList successors;
 	std::vector<sf::Vector2i> moves = { {0, -1}, {0, 1}, {-1, 0}, {1, 0} };
 

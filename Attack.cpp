@@ -1,11 +1,11 @@
 #include "Attack.h"
 #include <iostream>
-
+#include "Logger.h"
 Attack::Attack(const std::string& n, float d) : name(n), damage(d) {}
 
-void Attack::execute() {
+void Attack::execute() const{
 	// Example: just print the attack for now
-	std::cout << "Executing attack: " << name << " with damage: " << damage << std::endl;
+	Logger::console->info("Executing attack: " + name + " with damage: " + std::to_string(damage));
 }
 
 std::string Attack::getName() const {

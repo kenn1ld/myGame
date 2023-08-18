@@ -10,7 +10,7 @@ class Attack {
 public:
 	Attack(const std::string& n, float d); // note the change here
 
-	void execute();
+	void execute() const;
 	std::string getName() const;
 	float getDamage() const;
 };

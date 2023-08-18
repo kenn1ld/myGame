@@ -44,11 +44,12 @@ void Skeleton::update(float dt, const GameWorld& world) {
 sf::Vector2f Skeleton::directionToTarget(const sf::Vector2i& targetNode, const GameWorld& world) const {
 	sf::Vector2f targetPosition(static_cast<float>(targetNode.x * world.getTileSize().x), static_cast<float>(targetNode.y * world.getTileSize().y));
 	sf::Vector2f direction = targetPosition - sprite.getPosition();
-	float length = std::sqrt(direction.x * direction.x + direction.y * direction.y);
-	if (length != 0) {
+
+	if (float length = std::sqrt(direction.x * direction.x + direction.y * direction.y); length != 0) {
 		direction.x /= length;
 		direction.y /= length;
 	}
+
 	return direction;
 }
 
