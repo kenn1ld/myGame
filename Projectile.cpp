@@ -7,7 +7,7 @@ const float PROJECTILE_SPEED = 600.0f;
 const sf::Color DIRECTION_LINE_COLOR = sf::Color::Red;
 
 Projectile::Projectile(const sf::Vector2f& startPosition, const sf::Vector2f& targetPosition) {
-	getShape().setPosition(startPosition);
+	getMutableShape().setPosition(startPosition);
 	speed = PROJECTILE_SPEED;
 
 	// Compute direction vector
@@ -33,7 +33,7 @@ void Projectile::update(float dt) {
 		sf::Vector2f movement;
 		movement.x = speed * direction.x * dt;
 		movement.y = initialVerticalSpeed * dt;  // Use the modified vertical speed
-		getShape().move(movement);
+		getMutableShape().move(movement);
 
 		hitbox.left = getShape().getPosition().x;
 		hitbox.top = getShape().getPosition().y;
@@ -64,13 +64,13 @@ const sf::Color GREEN_ARROW_COLOR = sf::Color::Green;
 
 GreenArrow::GreenArrow(const sf::Vector2f& startPosition, const sf::Vector2f& targetPosition)
 	: Projectile(startPosition, targetPosition) {
-	getShape().setSize(ARROW_SIZE);
-	getShape().setFillColor(GREEN_ARROW_COLOR);
+	getMutableShape().setSize(ARROW_SIZE);  // Modified this line
+	getMutableShape().setFillColor(GREEN_ARROW_COLOR);  // Modified this line
 }
 
 void GreenArrow::initializeAttributes() {
-	getShape().setSize(ARROW_SIZE);
-	getShape().setFillColor(GREEN_ARROW_COLOR);
+	getMutableShape().setSize(ARROW_SIZE);  // Modified this line
+	getMutableShape().setFillColor(GREEN_ARROW_COLOR);  // Modified this line
 }
 
 // Derived RedArrow Class from Projectile
@@ -78,11 +78,11 @@ const sf::Color RED_ARROW_COLOR = sf::Color::Red;
 
 RedArrow::RedArrow(const sf::Vector2f& startPosition, const sf::Vector2f& targetPosition)
 	: Projectile(startPosition, targetPosition) {
-	getShape().setSize(ARROW_SIZE);
-	getShape().setFillColor(RED_ARROW_COLOR);
+	getMutableShape().setSize(ARROW_SIZE);  // Modified this line
+	getMutableShape().setFillColor(RED_ARROW_COLOR);  // Modified this line
 }
 
 void RedArrow::initializeAttributes() {
-	getShape().setSize(ARROW_SIZE);
-	getShape().setFillColor(RED_ARROW_COLOR);
+	getMutableShape().setSize(ARROW_SIZE);  // Modified this line
+	getMutableShape().setFillColor(RED_ARROW_COLOR);  // Modified this line
 }

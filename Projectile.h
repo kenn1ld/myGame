@@ -22,7 +22,6 @@ private:
 
 	Physics physics;
 
-
 	virtual void initializeAttributes() = 0;
 
 protected:
@@ -31,7 +30,6 @@ protected:
 	float getSpeed() const { return speed; }
 	const sf::Vector2f& getDirection() const { return direction; }
 	sf::VertexArray& getMutableDirectionLine() { return directionLine; }
-	const sf::FloatRect& getHitbox() const { return hitbox; }
 
 public:
 	virtual ~Projectile() = default;
@@ -41,8 +39,8 @@ public:
 	virtual bool isInsideScreen(const sf::RenderWindow& window) const;
 	bool isStuck = false;
 	sf::Clock stuckTime;
+	const sf::FloatRect& getHitbox() const { return hitbox; }
 };
-
 
 class GreenArrow : public Projectile {
 public:
