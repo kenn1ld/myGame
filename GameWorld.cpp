@@ -75,6 +75,11 @@ GameWorld::GameWorld(const std::string& tmxPath) {
 		// handle error
 	}
 
+	auto tmxTileSize = map.getTileSize();
+	tileSize.x = tmxTileSize.x;
+	tileSize.y = tmxTileSize.y;
+
+
 	const auto& tilesets = map.getTilesets();
 	Logger::console->info("Loading tile layer with {} tiles.", tilesets.size());
 	for (const auto& ts : tilesets) {
@@ -173,4 +178,104 @@ bool GameWorld::isGrounded(const sf::FloatRect& rect) const {
 		}
 	}
 	return false;
+}
+
+bool GameWorld::isWalkable(int x, int y) const {
+	sf::Vector2f position(static_cast<float>(x * tileSize.x), static_cast<float>(y * tileSize.y));
+	for (const auto& tile : tiles) {
+		if (tile.getGlobalBounds().contains(position)) {
+			return false;  // This assumes tiles are obstacles
+		}
+	}
+	return true;
+}
+
+sf::Vector2u GameWorld::getTileSize() const {
+	return tileSize;
+}
+
+std::list<sf::Vector2i> GameWorld::findPath(const sf::Vector2i& start, const sf::Vector2i& goal) const {
+	AStar astar(*this);
+	return astar.findPath(start, goal);
+}
+
+// A* class implementation
+
+GameWorld::AStar::AStar(const GameWorld& world) : world(world) {}
+
+
+std::list<sf::Vector2i> GameWorld::AStar::findPath(const sf::Vector2i& start, const sf::Vector2i& goal) {
+	NodeList openList, closedList;
+	auto startNode = std::make_unique<Node>(start.x, start.y);
+	auto goalNode = std::make_unique<Node>(goal.x, goal.y);
+	openList.push_back(std::move(startNode));
+
+	while (!openList.empty()) {
+		auto iter = std::min_element(openList.begin(), openList.end(), [](const auto& a, const auto& b) {
+			return a->totalCost() < b->totalCost();
+			});
+
+		Node* currentNode = iter->get();
+
+		if (currentNode->x == goalNode->x && currentNode->y == goalNode->y) {
+			std::list<sf::Vector2i> path = reconstructPath(currentNode);
+			return path;  // The cleanup of nodes is automatic due to unique_ptr
+		}
+
+		closedList.push_back(std::move(*iter));
+		openList.erase(iter);
+
+		NodeList successors = getSuccessors(currentNode);
+
+		for (auto& successor : successors) {
+			if (contains(closedList, successor->x, successor->y)) {
+				continue;
+			}
+
+			successor->heuristic = std::abs(successor->x - goalNode->x) + std::abs(successor->y - goalNode->y);
+			float tempCost = currentNode->cost + 1;
+
+			if (!contains(openList, successor->x, successor->y) || tempCost < successor->cost) {
+				successor->parent = currentNode;
+				successor->cost = tempCost;
+
+				if (!contains(openList, successor->x, successor->y)) {
+					openList.push_back(std::move(successor));
+				}
+			}
+		}
+	}
+
+	return {};  // Return an empty path if no path is found
+}
+
+GameWorld::AStar::NodeList GameWorld::AStar::getSuccessors(Node* node) {
+	NodeList successors;
+	std::vector<sf::Vector2i> moves = { {0, -1}, {0, 1}, {-1, 0}, {1, 0} };
+
+	for (const auto& move : moves) {
+		int newX = node->x + move.x;
+		int newY = node->y + move.y;
+
+		if (world.isWalkable(newX, newY)) {
+			successors.push_back(std::make_unique<Node>(newX, newY));
+		}
+	}
+
+	return successors;
+}
+
+bool GameWorld::AStar::contains(const NodeList& list, int x, int y) {
+	return std::find_if(list.begin(), list.end(), [x, y](const auto& node) {
+		return node->x == x && node->y == y;
+		}) != list.end();
+}
+
+std::list<sf::Vector2i> GameWorld::AStar::reconstructPath(Node* node) {
+	std::list<sf::Vector2i> path;
+	while (node) {
+		path.push_front({ node->x, node->y });
+		node = node->parent;
+	}
+	return path;
 }

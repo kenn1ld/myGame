@@ -96,43 +96,74 @@ void Skeleton::jump() {
 	}
 }
 
+bool Skeleton::needsPathUpdate(const sf::Vector2f& playerPosition) {
+	const float distanceThreshold = 50.0f;
+	float distanceSquared = std::pow(playerPosition.x - previousPlayerPosition.x, 2) + std::pow(playerPosition.y - previousPlayerPosition.y, 2);
+	return distanceSquared > distanceThreshold * distanceThreshold;
+}
+
+void Skeleton::handlePathfinding(const sf::Vector2f& playerPosition, const GameWorld& world) {
+	if (currentPath.empty() || needsPathUpdate(playerPosition)) {
+		sf::Vector2i startNode = { static_cast<int>(sprite.getPosition().x / world.getTileSize().x), static_cast<int>(sprite.getPosition().y / world.getTileSize().y) };
+		sf::Vector2i goalNode = { static_cast<int>(playerPosition.x / world.getTileSize().x), static_cast<int>(playerPosition.y / world.getTileSize().y) };
+
+		currentPath = world.findPath(startNode, goalNode);
+		if (!currentPath.empty()) {
+			currentTargetNode = currentPath.front();
+			currentPath.pop_front();
+			previousPlayerPosition = playerPosition;
+		}
+	}
+
+	// If there's a path, move the skeleton towards the current target node
+	if (!currentPath.empty()) {
+		// For simplicity, here we just directly set the skeleton's position to the target node.
+		// In a real game, you'd likely want to smoothly move the skeleton from its current position to the target node.
+		sprite.setPosition(static_cast<float>(currentTargetNode.x * world.getTileSize().x), static_cast<float>(currentTargetNode.y * world.getTileSize().y));
+		if (sprite.getPosition() == sf::Vector2f(static_cast<float>(currentTargetNode.x * world.getTileSize().x), static_cast<float>(currentTargetNode.y * world.getTileSize().y))) {
+			if (!currentPath.empty()) {
+				currentTargetNode = currentPath.front();
+				currentPath.pop_front();
+			}
+		}
+	}
+}
+
 void Skeleton::handleChase(float dt, const sf::Vector2f& playerPosition, const GameWorld& world) {
-	// Calculate the horizontal direction from the skeleton to the player
+	handlePathfinding(playerPosition, world);
 	float directionX = playerPosition.x - sprite.getPosition().x;
-
-	// Normalize the direction
 	directionX = (directionX > 0) ? 1 : ((directionX < 0) ? -1 : 0);
-
-	// Define a chase speed
 	float chaseSpeed = 5.0f;
-
-	// Update the skeleton's horizontal velocity to move towards the player
 	velocity.x = directionX * chaseSpeed;
 
 	if (isGrounded) {
 		bool shouldJump = false;
+		float checkDistance = 50.0f;  // Adjust based on game's scale
 
-		// Define a check distance (how far ahead we should check for platforms)
-		float checkDistance = 50.0f;  // This can be adjusted based on your game's scale
-
-		// Check for obstacles or elevated platforms
-		sf::FloatRect checkArea(
+		sf::FloatRect nearCheckArea(
 			sprite.getPosition().x + directionX * sprite.getSize().x,
-			sprite.getPosition().y - sprite.getSize().y,  // Check a bit upwards
-			directionX * checkDistance,
-			2 * sprite.getSize().y  // Check a height of 2 times the skeleton's height
+			sprite.getPosition().y - sprite.getSize().y,
+			directionX * (checkDistance / 2),
+			2 * sprite.getSize().y
 		);
 
-		// Adjusted vertical vision for the AI to detect platforms above
+		sf::FloatRect farCheckArea(
+			sprite.getPosition().x + directionX * sprite.getSize().x + directionX * (checkDistance / 2),
+			sprite.getPosition().y - sprite.getSize().y,
+			directionX * (checkDistance / 2),
+			2 * sprite.getSize().y
+		);
+
 		sf::FloatRect extendedCheckArea(
 			sprite.getPosition().x,
-			sprite.getPosition().y - 3 * sprite.getSize().y,  // Check higher upwards
+			sprite.getPosition().y - 3 * sprite.getSize().y,
 			sprite.getSize().x,
-			4 * sprite.getSize().y  // Check a height of 4 times the skeleton's height
+			4 * sprite.getSize().y
 		);
 
 		for (const auto& tile : world.getTiles()) {
-			if (world.getCollisionHandler().checkCollision(checkArea, tile.getGlobalBounds()) ||
+			if (world.getCollisionHandler().checkCollision(nearCheckArea, tile.getGlobalBounds()) ||
+				world.getCollisionHandler().checkCollision(farCheckArea, tile.getGlobalBounds()) ||
 				(world.getCollisionHandler().checkCollision(extendedCheckArea, tile.getGlobalBounds()) &&
 					playerPosition.y < tile.getGlobalBounds().top + tile.getGlobalBounds().height)) {
 				shouldJump = true;
@@ -144,16 +175,12 @@ void Skeleton::handleChase(float dt, const sf::Vector2f& playerPosition, const G
 			jump();
 		}
 
-		aiVisionRect.setPosition(checkArea.left, checkArea.top);
-		aiVisionRect.setSize(sf::Vector2f(checkArea.width, checkArea.height));
+		aiVisionRect.setPosition(nearCheckArea.left, nearCheckArea.top);
+		aiVisionRect.setSize(sf::Vector2f(nearCheckArea.width, nearCheckArea.height));
 	}
 
 	moveAndHandleCollisions(dt, world);
 }
-
-
-
-
 
 void Skeleton::draw(sf::RenderWindow& window) {
 	window.draw(sprite);

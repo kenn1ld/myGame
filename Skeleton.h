@@ -23,6 +23,11 @@ private:
     bool isGrounded;  // Indicates if the skeleton is on the ground
 
     std::unique_ptr<AIStrategy> aiStrategy;  // Current AI strategy
+    std::list<sf::Vector2i> currentPath;
+    sf::Vector2i currentTargetNode;
+    sf::Vector2f previousPlayerPosition;
+
+    bool needsPathUpdate(const sf::Vector2f& playerPosition);
 
 public:
     Skeleton();
@@ -34,6 +39,7 @@ public:
     void setStrategy(std::unique_ptr<AIStrategy> strategy);
     void moveAndHandleCollisions(float dt, const GameWorld& world);
     void jump();  // New jump function
+    void handlePathfinding(const sf::Vector2f& playerPosition, const GameWorld& world);
 };
 
 #endif
