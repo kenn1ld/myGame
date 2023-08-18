@@ -187,7 +187,6 @@ bool GameWorld::isWalkable(int x, int y) const {
 		});
 }
 
-
 sf::Vector2u GameWorld::getTileSize() const {
 	return tileSize;
 }
