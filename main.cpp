@@ -1,7 +1,6 @@
 #include <SFML/Graphics.hpp>
 #include "Player.h"
 #include "GameWorld.h"
-#include "Skeleton.h"
 #include "AIStrategy.h"  // Include the AI strategy header
 
 int main() {
@@ -15,11 +14,10 @@ int main() {
 	cameraView.setCenter(player.getPosition());
 
 	sf::Clock clock;
-	Skeleton skeleton;
+
 
 	// Set the skeleton's behavior to "Chase" for demonstration.
 	// This can be dynamically changed during gameplay based on certain conditions.
-	skeleton.setStrategy(std::make_unique<ChaseStrategy>());
 
 	while (window.isOpen()) {
 		float deltaTime = clock.restart().asSeconds();
@@ -42,15 +40,10 @@ int main() {
 
 		world.update(deltaTime, cameraView, player);
 
-		skeleton.handleChase(deltaTime, player.getPosition(), world);
-		// Update the Skeleton's AI behavior
-		skeleton.update(deltaTime, world);    // Update the Skeleton's position and other attributes
-
 		window.clear(sf::Color::Black);
 		window.setView(cameraView);
 		world.draw(window, cameraView);
 		player.draw(window);
-		skeleton.draw(window);  // Draw the Skeleton
 		window.display();
 	}
 

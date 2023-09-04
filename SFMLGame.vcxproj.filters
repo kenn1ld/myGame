@@ -19,12 +19,6 @@
     <Filter Include="Source Files\Enemy">
       <UniqueIdentifier>{ddabf983-9be1-4e2b-ba21-54afe7acaf7e}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\Enemy\Enemy types">
-      <UniqueIdentifier>{17e83d6a-95a8-4565-9222-6027ab0381da}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Enemy\Enemy types">
-      <UniqueIdentifier>{c85c02c0-1b37-4fb1-88b8-b0e4afc1447f}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -40,21 +34,6 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="CollisionHandler.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Enemy.h">
-      <Filter>Header Files\Enemy</Filter>
-    </ClCompile>
-    <ClCompile Include="Enemy.cpp">
-      <Filter>Source Files\Enemy</Filter>
-    </ClCompile>
-    <ClCompile Include="Attack.cpp">
-      <Filter>Source Files\Enemy</Filter>
-    </ClCompile>
-    <ClCompile Include="Skeleton.cpp">
-      <Filter>Source Files\Enemy\Enemy types</Filter>
-    </ClCompile>
-    <ClCompile Include="AIStrategy.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="AStar.cpp">
@@ -76,12 +55,6 @@
     </ClInclude>
     <ClInclude Include="CollisionHandler.h">
       <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Attack.h">
-      <Filter>Header Files\Enemy</Filter>
-    </ClInclude>
-    <ClInclude Include="Skeleton.h">
-      <Filter>Header Files\Enemy\Enemy types</Filter>
     </ClInclude>
     <ClInclude Include="AIStrategy.h">
       <Filter>Header Files</Filter>
