@@ -51,11 +51,14 @@
     <ClCompile Include="Attack.cpp">
       <Filter>Source Files\Enemy</Filter>
     </ClCompile>
-    <ClCompile Include="Zombie.cpp">
-      <Filter>Source Files\Enemy\Enemy types</Filter>
-    </ClCompile>
     <ClCompile Include="Skeleton.cpp">
       <Filter>Source Files\Enemy\Enemy types</Filter>
+    </ClCompile>
+    <ClCompile Include="AIStrategy.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="AStar.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -77,11 +80,14 @@
     <ClInclude Include="Attack.h">
       <Filter>Header Files\Enemy</Filter>
     </ClInclude>
-    <ClInclude Include="Zombie.h">
-      <Filter>Header Files\Enemy\Enemy types</Filter>
-    </ClInclude>
     <ClInclude Include="Skeleton.h">
       <Filter>Header Files\Enemy\Enemy types</Filter>
+    </ClInclude>
+    <ClInclude Include="AIStrategy.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="AStar.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

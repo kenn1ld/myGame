@@ -137,6 +137,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="AIStrategy.cpp" />
+    <ClCompile Include="AStar.cpp" />
     <ClCompile Include="Attack.cpp" />
     <ClCompile Include="CollisionHandler.cpp" />
     <ClCompile Include="Enemy.cpp" />
@@ -149,6 +150,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AIStrategy.h" />
+    <ClInclude Include="AStar.h" />
     <ClInclude Include="Attack.h" />
     <ClInclude Include="CollisionHandler.h" />
     <ClInclude Include="GameWorld.h" />
