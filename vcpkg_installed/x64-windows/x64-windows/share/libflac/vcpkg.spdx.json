@@ -3,13 +3,13 @@
   "spdxVersion": "SPDX-2.2",
   "dataLicense": "CC0-1.0",
   "SPDXID": "SPDXRef-DOCUMENT",
-  "documentNamespace": "https://spdx.org/spdxdocs/libflac-x64-windows-1.4.2-6269dbff-dd9f-4f8f-afa1-6b863c03829d",
-  "name": "libflac:x64-windows@1.4.2 8ba7b42270d3f8dce530c9f2c8420305f9069fd395d572339148363d935145a0",
+  "documentNamespace": "https://spdx.org/spdxdocs/libflac-x64-windows-1.4.2-5639d25a-5c75-4582-a808-3ce0e9f840e2",
+  "name": "libflac:x64-windows@1.4.2 6387bf4c73202b16aaa53eca3e060f1b7f42f312085a4d4d90cc05aa4dddc418",
   "creationInfo": {
     "creators": [
       "Tool: vcpkg-9990a4c9026811a312cb2af78bf77f3d9d288416"
     ],
-    "created": "2023-08-15T21:34:16Z"
+    "created": "2023-09-04T22:19:13Z"
   },
   "relationships": [
     {
@@ -78,7 +78,7 @@
       "name": "libflac",
       "SPDXID": "SPDXRef-port",
       "versionInfo": "1.4.2",
-      "downloadLocation": "git+https://github.com/Microsoft/vcpkg#ports/libflac",
+      "downloadLocation": "NOASSERTION",
       "homepage": "https://xiph.org/flac/",
       "licenseConcluded": "BSD-3-Clause",
       "licenseDeclared": "NOASSERTION",
@@ -89,7 +89,7 @@
     {
       "name": "libflac:x64-windows",
       "SPDXID": "SPDXRef-binary",
-      "versionInfo": "8ba7b42270d3f8dce530c9f2c8420305f9069fd395d572339148363d935145a0",
+      "versionInfo": "6387bf4c73202b16aaa53eca3e060f1b7f42f312085a4d4d90cc05aa4dddc418",
       "downloadLocation": "NONE",
       "licenseConcluded": "BSD-3-Clause",
       "licenseDeclared": "NOASSERTION",
@@ -113,7 +113,7 @@
   ],
   "files": [
     {
-      "fileName": "./C:/Users/kenne/SFML projects/MyGame/vcpkg/ports/libflac/fix-compile-options.patch",
+      "fileName": "./C:/src/vcpkg/ports/libflac/fix-compile-options.patch",
       "SPDXID": "SPDXRef-file-0",
       "checksums": [
         {
@@ -125,7 +125,7 @@
       "copyrightText": "NOASSERTION"
     },
     {
-      "fileName": "./C:/Users/kenne/SFML projects/MyGame/vcpkg/ports/libflac/portfile.cmake",
+      "fileName": "./C:/src/vcpkg/ports/libflac/portfile.cmake",
       "SPDXID": "SPDXRef-file-1",
       "checksums": [
         {
@@ -137,7 +137,7 @@
       "copyrightText": "NOASSERTION"
     },
     {
-      "fileName": "./C:/Users/kenne/SFML projects/MyGame/vcpkg/ports/libflac/usage",
+      "fileName": "./C:/src/vcpkg/ports/libflac/usage",
       "SPDXID": "SPDXRef-file-2",
       "checksums": [
         {
@@ -149,7 +149,7 @@
       "copyrightText": "NOASSERTION"
     },
     {
-      "fileName": "./C:/Users/kenne/SFML projects/MyGame/vcpkg/ports/libflac/uwp-library-console.patch",
+      "fileName": "./C:/src/vcpkg/ports/libflac/uwp-library-console.patch",
       "SPDXID": "SPDXRef-file-3",
       "checksums": [
         {
@@ -161,7 +161,7 @@
       "copyrightText": "NOASSERTION"
     },
     {
-      "fileName": "./C:/Users/kenne/SFML projects/MyGame/vcpkg/ports/libflac/vcpkg.json",
+      "fileName": "./C:/src/vcpkg/ports/libflac/vcpkg.json",
       "SPDXID": "SPDXRef-file-4",
       "checksums": [
         {

@@ -3,13 +3,13 @@
   "spdxVersion": "SPDX-2.2",
   "dataLicense": "CC0-1.0",
   "SPDXID": "SPDXRef-DOCUMENT",
-  "documentNamespace": "https://spdx.org/spdxdocs/brotli-x64-windows-1.0.9#5-fbf91cf9-08bb-45e5-afec-8d5774023c31",
-  "name": "brotli:x64-windows@1.0.9#5 90debf2603d7e304c4e4aaadbfdcedb75887a1bcc87566644e04e7c2d9e39dbf",
+  "documentNamespace": "https://spdx.org/spdxdocs/brotli-x64-windows-1.0.9#5-21fde22f-fc2c-4886-8f0e-d92cafd34c24",
+  "name": "brotli:x64-windows@1.0.9#5 68d764db7fcfda137b211f4fc797deff066c0e7b647202164043d04c9a8a2125",
   "creationInfo": {
     "creators": [
       "Tool: vcpkg-9990a4c9026811a312cb2af78bf77f3d9d288416"
     ],
-    "created": "2023-08-15T21:33:24Z"
+    "created": "2023-09-04T22:19:28Z"
   },
   "relationships": [
     {
@@ -98,7 +98,7 @@
       "name": "brotli",
       "SPDXID": "SPDXRef-port",
       "versionInfo": "1.0.9#5",
-      "downloadLocation": "git+https://github.com/Microsoft/vcpkg#ports/brotli",
+      "downloadLocation": "NOASSERTION",
       "homepage": "https://github.com/google/brotli",
       "licenseConcluded": "MIT",
       "licenseDeclared": "NOASSERTION",
@@ -109,7 +109,7 @@
     {
       "name": "brotli:x64-windows",
       "SPDXID": "SPDXRef-binary",
-      "versionInfo": "90debf2603d7e304c4e4aaadbfdcedb75887a1bcc87566644e04e7c2d9e39dbf",
+      "versionInfo": "68d764db7fcfda137b211f4fc797deff066c0e7b647202164043d04c9a8a2125",
       "downloadLocation": "NONE",
       "licenseConcluded": "MIT",
       "licenseDeclared": "NOASSERTION",
@@ -133,7 +133,7 @@
   ],
   "files": [
     {
-      "fileName": "./C:/Users/kenne/SFML projects/MyGame/vcpkg/ports/brotli/fix-arm-uwp.patch",
+      "fileName": "./C:/src/vcpkg/ports/brotli/fix-arm-uwp.patch",
       "SPDXID": "SPDXRef-file-0",
       "checksums": [
         {
@@ -145,7 +145,7 @@
       "copyrightText": "NOASSERTION"
     },
     {
-      "fileName": "./C:/Users/kenne/SFML projects/MyGame/vcpkg/ports/brotli/install.patch",
+      "fileName": "./C:/src/vcpkg/ports/brotli/install.patch",
       "SPDXID": "SPDXRef-file-1",
       "checksums": [
         {
@@ -157,7 +157,7 @@
       "copyrightText": "NOASSERTION"
     },
     {
-      "fileName": "./C:/Users/kenne/SFML projects/MyGame/vcpkg/ports/brotli/pkgconfig.patch",
+      "fileName": "./C:/src/vcpkg/ports/brotli/pkgconfig.patch",
       "SPDXID": "SPDXRef-file-2",
       "checksums": [
         {
@@ -169,7 +169,7 @@
       "copyrightText": "NOASSERTION"
     },
     {
-      "fileName": "./C:/Users/kenne/SFML projects/MyGame/vcpkg/ports/brotli/portfile.cmake",
+      "fileName": "./C:/src/vcpkg/ports/brotli/portfile.cmake",
       "SPDXID": "SPDXRef-file-3",
       "checksums": [
         {
@@ -181,7 +181,7 @@
       "copyrightText": "NOASSERTION"
     },
     {
-      "fileName": "./C:/Users/kenne/SFML projects/MyGame/vcpkg/ports/brotli/unofficial-brotli-config.cmake",
+      "fileName": "./C:/src/vcpkg/ports/brotli/unofficial-brotli-config.cmake",
       "SPDXID": "SPDXRef-file-4",
       "checksums": [
         {
@@ -193,7 +193,7 @@
       "copyrightText": "NOASSERTION"
     },
     {
-      "fileName": "./C:/Users/kenne/SFML projects/MyGame/vcpkg/ports/brotli/usage",
+      "fileName": "./C:/src/vcpkg/ports/brotli/usage",
       "SPDXID": "SPDXRef-file-5",
       "checksums": [
         {
@@ -205,7 +205,7 @@
       "copyrightText": "NOASSERTION"
     },
     {
-      "fileName": "./C:/Users/kenne/SFML projects/MyGame/vcpkg/ports/brotli/vcpkg.json",
+      "fileName": "./C:/src/vcpkg/ports/brotli/vcpkg.json",
       "SPDXID": "SPDXRef-file-6",
       "checksums": [
         {

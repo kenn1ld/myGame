@@ -1,0 +1,8 @@
+Package: fmt
+Version: 10.0.0
+Depends: vcpkg-cmake, vcpkg-cmake-config
+Architecture: x64-windows
+Multi-Arch: same
+Abi: 8b8b36fbe22a61331458e33675709d7a55fddf2502c5b4fb5453198793a23965
+Description: Formatting library for C++. It can be used as a safe alternative to printf or as a fast alternative to IOStreams.
+Status: purge ok not-installed

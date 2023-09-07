@@ -3,13 +3,13 @@
   "spdxVersion": "SPDX-2.2",
   "dataLicense": "CC0-1.0",
   "SPDXID": "SPDXRef-DOCUMENT",
-  "documentNamespace": "https://spdx.org/spdxdocs/freetype-x64-windows-2.12.1#3-8743c4e6-5a53-43c8-b45d-68ed16dbca1d",
-  "name": "freetype:x64-windows@2.12.1#3 7451d22ef275f7e87551d776b433bb1988f1cca71723d4237c360c637f12d345",
+  "documentNamespace": "https://spdx.org/spdxdocs/freetype-x64-windows-2.12.1#3-70655b9f-24db-4d15-b0a7-bbaf678c4318",
+  "name": "freetype:x64-windows@2.12.1#3 01ed8b17db560e32ddf30ff390020eb8730328d81318e73bf1e9b19db1fa16aa",
   "creationInfo": {
     "creators": [
       "Tool: vcpkg-9990a4c9026811a312cb2af78bf77f3d9d288416"
     ],
-    "created": "2023-08-15T21:33:52Z"
+    "created": "2023-09-04T22:19:41Z"
   },
   "relationships": [
     {
@@ -118,7 +118,7 @@
       "name": "freetype",
       "SPDXID": "SPDXRef-port",
       "versionInfo": "2.12.1#3",
-      "downloadLocation": "git+https://github.com/Microsoft/vcpkg#ports/freetype",
+      "downloadLocation": "NOASSERTION",
       "homepage": "https://www.freetype.org/",
       "licenseConcluded": "FTL OR GPL-2.0-or-later",
       "licenseDeclared": "NOASSERTION",
@@ -129,7 +129,7 @@
     {
       "name": "freetype:x64-windows",
       "SPDXID": "SPDXRef-binary",
-      "versionInfo": "7451d22ef275f7e87551d776b433bb1988f1cca71723d4237c360c637f12d345",
+      "versionInfo": "01ed8b17db560e32ddf30ff390020eb8730328d81318e73bf1e9b19db1fa16aa",
       "downloadLocation": "NONE",
       "licenseConcluded": "FTL OR GPL-2.0-or-later",
       "licenseDeclared": "NOASSERTION",
@@ -154,7 +154,7 @@
   ],
   "files": [
     {
-      "fileName": "./C:/Users/kenne/SFML projects/MyGame/vcpkg/ports/freetype/0003-Fix-UWP.patch",
+      "fileName": "./C:/src/vcpkg/ports/freetype/0003-Fix-UWP.patch",
       "SPDXID": "SPDXRef-file-0",
       "checksums": [
         {
@@ -166,7 +166,7 @@
       "copyrightText": "NOASSERTION"
     },
     {
-      "fileName": "./C:/Users/kenne/SFML projects/MyGame/vcpkg/ports/freetype/brotli-static.patch",
+      "fileName": "./C:/src/vcpkg/ports/freetype/brotli-static.patch",
       "SPDXID": "SPDXRef-file-1",
       "checksums": [
         {
@@ -178,7 +178,7 @@
       "copyrightText": "NOASSERTION"
     },
     {
-      "fileName": "./C:/Users/kenne/SFML projects/MyGame/vcpkg/ports/freetype/bzip2.patch",
+      "fileName": "./C:/src/vcpkg/ports/freetype/bzip2.patch",
       "SPDXID": "SPDXRef-file-2",
       "checksums": [
         {
@@ -190,7 +190,7 @@
       "copyrightText": "NOASSERTION"
     },
     {
-      "fileName": "./C:/Users/kenne/SFML projects/MyGame/vcpkg/ports/freetype/error-strings.patch",
+      "fileName": "./C:/src/vcpkg/ports/freetype/error-strings.patch",
       "SPDXID": "SPDXRef-file-3",
       "checksums": [
         {
@@ -202,7 +202,7 @@
       "copyrightText": "NOASSERTION"
     },
     {
-      "fileName": "./C:/Users/kenne/SFML projects/MyGame/vcpkg/ports/freetype/fix-exports.patch",
+      "fileName": "./C:/src/vcpkg/ports/freetype/fix-exports.patch",
       "SPDXID": "SPDXRef-file-4",
       "checksums": [
         {
@@ -214,7 +214,7 @@
       "copyrightText": "NOASSERTION"
     },
     {
-      "fileName": "./C:/Users/kenne/SFML projects/MyGame/vcpkg/ports/freetype/portfile.cmake",
+      "fileName": "./C:/src/vcpkg/ports/freetype/portfile.cmake",
       "SPDXID": "SPDXRef-file-5",
       "checksums": [
         {
@@ -226,7 +226,7 @@
       "copyrightText": "NOASSERTION"
     },
     {
-      "fileName": "./C:/Users/kenne/SFML projects/MyGame/vcpkg/ports/freetype/usage",
+      "fileName": "./C:/src/vcpkg/ports/freetype/usage",
       "SPDXID": "SPDXRef-file-6",
       "checksums": [
         {
@@ -238,7 +238,7 @@
       "copyrightText": "NOASSERTION"
     },
     {
-      "fileName": "./C:/Users/kenne/SFML projects/MyGame/vcpkg/ports/freetype/vcpkg-cmake-wrapper.cmake",
+      "fileName": "./C:/src/vcpkg/ports/freetype/vcpkg-cmake-wrapper.cmake",
       "SPDXID": "SPDXRef-file-7",
       "checksums": [
         {
@@ -250,7 +250,7 @@
       "copyrightText": "NOASSERTION"
     },
     {
-      "fileName": "./C:/Users/kenne/SFML projects/MyGame/vcpkg/ports/freetype/vcpkg.json",
+      "fileName": "./C:/src/vcpkg/ports/freetype/vcpkg.json",
       "SPDXID": "SPDXRef-file-8",
       "checksums": [
         {

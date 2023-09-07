@@ -1,0 +1,9 @@
+Package: box2d
+Version: 2.4.1
+Port-Version: 3
+Depends: vcpkg-cmake, vcpkg-cmake-config
+Architecture: x64-windows
+Multi-Arch: same
+Abi: 84eabc6ee508c857de948b29276a3852a6d98ded7dcc5ff9b71fa897cb9371f2
+Description: An open source C++ engine for simulating rigid bodies in 2D
+Status: install ok half-installed

@@ -8,11 +8,12 @@
 #include <list>
 #include <algorithm>
 #include <cmath>
-#include <memory>  // Required for std::unique_ptr
+#include <memory>
 #include "CollisionHandler.h"
-#include "AStar.h"  // Include the new A* header
 
-class Player;  // Forward declaration of the Player class
+// Forward declarations
+class AStar;
+class Player;
 
 class GameWorld {
 private:
@@ -22,7 +23,7 @@ private:
     void loadTileLayer(const tmx::TileLayer& layer, const tmx::Map& map);
     sf::Vector2u tileSize;
 
-    AStar astar;  // Use the AStar class defined in AStar.h
+    std::unique_ptr<AStar> astar;
 
 public:
     explicit GameWorld(const std::string& tmxPath);

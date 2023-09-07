@@ -3,13 +3,13 @@
   "spdxVersion": "SPDX-2.2",
   "dataLicense": "CC0-1.0",
   "SPDXID": "SPDXRef-DOCUMENT",
-  "documentNamespace": "https://spdx.org/spdxdocs/gtest-x64-windows-1.13.0-8d44da6e-47cd-4097-9321-bf775be2416b",
-  "name": "gtest:x64-windows@1.13.0 9860b48743201092ee4e638fa1508958602dbc9f4ee8d8d13366d6706c4abd08",
+  "documentNamespace": "https://spdx.org/spdxdocs/gtest-x64-windows-1.13.0-6dfa2969-27d5-4ee2-8c36-d1e491d4b51c",
+  "name": "gtest:x64-windows@1.13.0 b14143f6246837fb50337f558c49aa6890b0241cd6fb06aa4b851a8f5c008240",
   "creationInfo": {
     "creators": [
       "Tool: vcpkg-9990a4c9026811a312cb2af78bf77f3d9d288416"
     ],
-    "created": "2023-08-16T11:59:42Z"
+    "created": "2023-09-04T22:17:56Z"
   },
   "relationships": [
     {
@@ -88,7 +88,7 @@
       "name": "gtest",
       "SPDXID": "SPDXRef-port",
       "versionInfo": "1.13.0",
-      "downloadLocation": "git+https://github.com/Microsoft/vcpkg#ports/gtest",
+      "downloadLocation": "NOASSERTION",
       "homepage": "https://github.com/google/googletest",
       "licenseConcluded": "BSD-3-Clause",
       "licenseDeclared": "NOASSERTION",
@@ -99,7 +99,7 @@
     {
       "name": "gtest:x64-windows",
       "SPDXID": "SPDXRef-binary",
-      "versionInfo": "9860b48743201092ee4e638fa1508958602dbc9f4ee8d8d13366d6706c4abd08",
+      "versionInfo": "b14143f6246837fb50337f558c49aa6890b0241cd6fb06aa4b851a8f5c008240",
       "downloadLocation": "NONE",
       "licenseConcluded": "BSD-3-Clause",
       "licenseDeclared": "NOASSERTION",

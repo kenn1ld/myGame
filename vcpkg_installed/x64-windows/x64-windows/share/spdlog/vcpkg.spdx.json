@@ -3,13 +3,13 @@
   "spdxVersion": "SPDX-2.2",
   "dataLicense": "CC0-1.0",
   "SPDXID": "SPDXRef-DOCUMENT",
-  "documentNamespace": "https://spdx.org/spdxdocs/spdlog-x64-windows-1.12.0-96a1134c-7c08-420c-b344-b4a3470e1d77",
-  "name": "spdlog:x64-windows@1.12.0 edac3f65ca45f98228cd97341a16c75509196317b4e99d9e81b3cdf8fbbe32a4",
+  "documentNamespace": "https://spdx.org/spdxdocs/spdlog-x64-windows-1.12.0-5373ec1d-1da5-4171-a65f-dc54b6421b96",
+  "name": "spdlog:x64-windows@1.12.0 e35b5c59933a1463dc454e1fe29e01fb6ef24ddec4c432c24e43cb9cfb151425",
   "creationInfo": {
     "creators": [
       "Tool: vcpkg-9990a4c9026811a312cb2af78bf77f3d9d288416"
     ],
-    "created": "2023-08-16T13:31:46Z"
+    "created": "2023-09-04T22:20:49Z"
   },
   "relationships": [
     {
@@ -58,7 +58,7 @@
       "name": "spdlog",
       "SPDXID": "SPDXRef-port",
       "versionInfo": "1.12.0",
-      "downloadLocation": "git+https://github.com/Microsoft/vcpkg#ports/spdlog",
+      "downloadLocation": "NOASSERTION",
       "homepage": "https://github.com/gabime/spdlog",
       "licenseConcluded": "MIT",
       "licenseDeclared": "NOASSERTION",
@@ -69,7 +69,7 @@
     {
       "name": "spdlog:x64-windows",
       "SPDXID": "SPDXRef-binary",
-      "versionInfo": "edac3f65ca45f98228cd97341a16c75509196317b4e99d9e81b3cdf8fbbe32a4",
+      "versionInfo": "e35b5c59933a1463dc454e1fe29e01fb6ef24ddec4c432c24e43cb9cfb151425",
       "downloadLocation": "NONE",
       "licenseConcluded": "MIT",
       "licenseDeclared": "NOASSERTION",

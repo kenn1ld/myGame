@@ -3,13 +3,13 @@
   "spdxVersion": "SPDX-2.2",
   "dataLicense": "CC0-1.0",
   "SPDXID": "SPDXRef-DOCUMENT",
-  "documentNamespace": "https://spdx.org/spdxdocs/openal-soft-x64-windows-1.23.1-6e08524c-61b2-46b5-aed7-48a05da306df",
-  "name": "openal-soft:x64-windows@1.23.1 9416d80cb307bb980e58bfaa67421355336a6705ecdfd72248a3983f0c09ab72",
+  "documentNamespace": "https://spdx.org/spdxdocs/openal-soft-x64-windows-1.23.1-3368c8ab-64e2-4c3c-8c90-41080ef7082b",
+  "name": "openal-soft:x64-windows@1.23.1 706c5cae324021ff9d8e3bd9db755caf91001cd58fd9def84efbecd026dac0b8",
   "creationInfo": {
     "creators": [
       "Tool: vcpkg-9990a4c9026811a312cb2af78bf77f3d9d288416"
     ],
-    "created": "2023-08-15T21:34:49Z"
+    "created": "2023-09-04T22:18:28Z"
   },
   "relationships": [
     {
@@ -68,7 +68,7 @@
       "name": "openal-soft",
       "SPDXID": "SPDXRef-port",
       "versionInfo": "1.23.1",
-      "downloadLocation": "git+https://github.com/Microsoft/vcpkg#ports/openal-soft",
+      "downloadLocation": "NOASSERTION",
       "homepage": "https://github.com/kcat/openal-soft",
       "licenseConcluded": "LGPL-2.0-or-later",
       "licenseDeclared": "NOASSERTION",
@@ -79,7 +79,7 @@
     {
       "name": "openal-soft:x64-windows",
       "SPDXID": "SPDXRef-binary",
-      "versionInfo": "9416d80cb307bb980e58bfaa67421355336a6705ecdfd72248a3983f0c09ab72",
+      "versionInfo": "706c5cae324021ff9d8e3bd9db755caf91001cd58fd9def84efbecd026dac0b8",
       "downloadLocation": "NONE",
       "licenseConcluded": "LGPL-2.0-or-later",
       "licenseDeclared": "NOASSERTION",
@@ -103,7 +103,7 @@
   ],
   "files": [
     {
-      "fileName": "./C:/Users/kenne/SFML projects/MyGame/vcpkg/ports/openal-soft/c12ada68951ea67a59bef7d4fcdf22334990c12a.patch",
+      "fileName": "./C:/src/vcpkg/ports/openal-soft/c12ada68951ea67a59bef7d4fcdf22334990c12a.patch",
       "SPDXID": "SPDXRef-file-0",
       "checksums": [
         {
@@ -115,7 +115,7 @@
       "copyrightText": "NOASSERTION"
     },
     {
-      "fileName": "./C:/Users/kenne/SFML projects/MyGame/vcpkg/ports/openal-soft/portfile.cmake",
+      "fileName": "./C:/src/vcpkg/ports/openal-soft/portfile.cmake",
       "SPDXID": "SPDXRef-file-1",
       "checksums": [
         {
@@ -127,7 +127,7 @@
       "copyrightText": "NOASSERTION"
     },
     {
-      "fileName": "./C:/Users/kenne/SFML projects/MyGame/vcpkg/ports/openal-soft/usage",
+      "fileName": "./C:/src/vcpkg/ports/openal-soft/usage",
       "SPDXID": "SPDXRef-file-2",
       "checksums": [
         {
@@ -139,7 +139,7 @@
       "copyrightText": "NOASSERTION"
     },
     {
-      "fileName": "./C:/Users/kenne/SFML projects/MyGame/vcpkg/ports/openal-soft/vcpkg.json",
+      "fileName": "./C:/src/vcpkg/ports/openal-soft/vcpkg.json",
       "SPDXID": "SPDXRef-file-3",
       "checksums": [
         {

@@ -3,13 +3,13 @@
   "spdxVersion": "SPDX-2.2",
   "dataLicense": "CC0-1.0",
   "SPDXID": "SPDXRef-DOCUMENT",
-  "documentNamespace": "https://spdx.org/spdxdocs/bzip2-x64-windows-1.0.8#5-9f3a19bc-8869-4c7f-9df1-31e1f3319e7f",
-  "name": "bzip2:x64-windows@1.0.8#5 7fa08d6badf6c599cc8e79e108e99709ef6b3d9799443a58b68d7beb3f71548e",
+  "documentNamespace": "https://spdx.org/spdxdocs/bzip2-x64-windows-1.0.8#5-3f8cfd95-0078-48fa-acd9-bf68403cc427",
+  "name": "bzip2:x64-windows@1.0.8#5 91fb25e9bf5728ed43daf2b3f6f615020b60768f6fab71047675fb3ff65b2e7a",
   "creationInfo": {
     "creators": [
       "Tool: vcpkg-9990a4c9026811a312cb2af78bf77f3d9d288416"
     ],
-    "created": "2023-08-15T21:33:29Z"
+    "created": "2023-09-04T22:10:53Z"
   },
   "relationships": [
     {
@@ -88,7 +88,7 @@
       "name": "bzip2",
       "SPDXID": "SPDXRef-port",
       "versionInfo": "1.0.8#5",
-      "downloadLocation": "git+https://github.com/Microsoft/vcpkg#ports/bzip2",
+      "downloadLocation": "NOASSERTION",
       "homepage": "https://sourceware.org/bzip2/",
       "licenseConcluded": "bzip2-1.0.6",
       "licenseDeclared": "NOASSERTION",
@@ -99,7 +99,7 @@
     {
       "name": "bzip2:x64-windows",
       "SPDXID": "SPDXRef-binary",
-      "versionInfo": "7fa08d6badf6c599cc8e79e108e99709ef6b3d9799443a58b68d7beb3f71548e",
+      "versionInfo": "91fb25e9bf5728ed43daf2b3f6f615020b60768f6fab71047675fb3ff65b2e7a",
       "downloadLocation": "NONE",
       "licenseConcluded": "bzip2-1.0.6",
       "licenseDeclared": "NOASSERTION",
@@ -124,7 +124,7 @@
   ],
   "files": [
     {
-      "fileName": "./C:/Users/kenne/SFML projects/MyGame/vcpkg/ports/bzip2/bzip2.pc.in",
+      "fileName": "./C:/src/vcpkg/ports/bzip2/bzip2.pc.in",
       "SPDXID": "SPDXRef-file-0",
       "checksums": [
         {
@@ -136,7 +136,7 @@
       "copyrightText": "NOASSERTION"
     },
     {
-      "fileName": "./C:/Users/kenne/SFML projects/MyGame/vcpkg/ports/bzip2/CMakeLists.txt",
+      "fileName": "./C:/src/vcpkg/ports/bzip2/CMakeLists.txt",
       "SPDXID": "SPDXRef-file-1",
       "checksums": [
         {
@@ -148,7 +148,7 @@
       "copyrightText": "NOASSERTION"
     },
     {
-      "fileName": "./C:/Users/kenne/SFML projects/MyGame/vcpkg/ports/bzip2/fix-import-export-macros.patch",
+      "fileName": "./C:/src/vcpkg/ports/bzip2/fix-import-export-macros.patch",
       "SPDXID": "SPDXRef-file-2",
       "checksums": [
         {
@@ -160,7 +160,7 @@
       "copyrightText": "NOASSERTION"
     },
     {
-      "fileName": "./C:/Users/kenne/SFML projects/MyGame/vcpkg/ports/bzip2/portfile.cmake",
+      "fileName": "./C:/src/vcpkg/ports/bzip2/portfile.cmake",
       "SPDXID": "SPDXRef-file-3",
       "checksums": [
         {
@@ -172,7 +172,7 @@
       "copyrightText": "NOASSERTION"
     },
     {
-      "fileName": "./C:/Users/kenne/SFML projects/MyGame/vcpkg/ports/bzip2/usage",
+      "fileName": "./C:/src/vcpkg/ports/bzip2/usage",
       "SPDXID": "SPDXRef-file-4",
       "checksums": [
         {
@@ -184,7 +184,7 @@
       "copyrightText": "NOASSERTION"
     },
     {
-      "fileName": "./C:/Users/kenne/SFML projects/MyGame/vcpkg/ports/bzip2/vcpkg.json",
+      "fileName": "./C:/src/vcpkg/ports/bzip2/vcpkg.json",
       "SPDXID": "SPDXRef-file-5",
       "checksums": [
         {

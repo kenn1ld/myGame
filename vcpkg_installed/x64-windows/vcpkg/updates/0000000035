@@ -1,0 +1,9 @@
+Package: tmxlite
+Version: 1.3.0
+Port-Version: 1
+Depends: vcpkg-cmake, vcpkg-cmake-config
+Architecture: x64-windows
+Multi-Arch: same
+Abi: e8ab56268727723f3425523c6cb2fc0469f573bd8268b7b4c630dbad6e5cd86a
+Description: A lightweight C++14 parsing library for tmx map files created with the Tiled map editor.
+Status: purge ok not-installed

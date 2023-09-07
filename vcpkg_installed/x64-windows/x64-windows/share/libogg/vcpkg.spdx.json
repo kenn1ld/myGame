@@ -3,13 +3,13 @@
   "spdxVersion": "SPDX-2.2",
   "dataLicense": "CC0-1.0",
   "SPDXID": "SPDXRef-DOCUMENT",
-  "documentNamespace": "https://spdx.org/spdxdocs/libogg-x64-windows-1.3.5#1-5a26e318-2f3e-4943-92af-f694cd338672",
-  "name": "libogg:x64-windows@1.3.5#1 71b050cf34d89639b0035d3eafaedb774af6f9cb290dc41777413ad76a532890",
+  "documentNamespace": "https://spdx.org/spdxdocs/libogg-x64-windows-1.3.5#1-bee8e172-15db-470d-924d-945c9760b12a",
+  "name": "libogg:x64-windows@1.3.5#1 75e057083fa7f77a75958d4379d1a51d1de5292174863c288079167ec7afeaaa",
   "creationInfo": {
     "creators": [
       "Tool: vcpkg-9990a4c9026811a312cb2af78bf77f3d9d288416"
     ],
-    "created": "2023-08-15T21:34:03Z"
+    "created": "2023-09-04T22:18:40Z"
   },
   "relationships": [
     {
@@ -48,7 +48,7 @@
       "name": "libogg",
       "SPDXID": "SPDXRef-port",
       "versionInfo": "1.3.5#1",
-      "downloadLocation": "git+https://github.com/Microsoft/vcpkg#ports/libogg",
+      "downloadLocation": "NOASSERTION",
       "homepage": "https://www.xiph.org/ogg",
       "licenseConcluded": "BSD-3-Clause",
       "licenseDeclared": "NOASSERTION",
@@ -59,7 +59,7 @@
     {
       "name": "libogg:x64-windows",
       "SPDXID": "SPDXRef-binary",
-      "versionInfo": "71b050cf34d89639b0035d3eafaedb774af6f9cb290dc41777413ad76a532890",
+      "versionInfo": "75e057083fa7f77a75958d4379d1a51d1de5292174863c288079167ec7afeaaa",
       "downloadLocation": "NONE",
       "licenseConcluded": "BSD-3-Clause",
       "licenseDeclared": "NOASSERTION",
@@ -69,7 +69,7 @@
   ],
   "files": [
     {
-      "fileName": "./C:/Users/kenne/SFML projects/MyGame/vcpkg/ports/libogg/portfile.cmake",
+      "fileName": "./C:/src/vcpkg/ports/libogg/portfile.cmake",
       "SPDXID": "SPDXRef-file-0",
       "checksums": [
         {
@@ -81,7 +81,7 @@
       "copyrightText": "NOASSERTION"
     },
     {
-      "fileName": "./C:/Users/kenne/SFML projects/MyGame/vcpkg/ports/libogg/vcpkg.json",
+      "fileName": "./C:/src/vcpkg/ports/libogg/vcpkg.json",
       "SPDXID": "SPDXRef-file-1",
       "checksums": [
         {

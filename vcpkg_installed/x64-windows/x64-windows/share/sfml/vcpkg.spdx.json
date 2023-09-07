@@ -3,13 +3,13 @@
   "spdxVersion": "SPDX-2.2",
   "dataLicense": "CC0-1.0",
   "SPDXID": "SPDXRef-DOCUMENT",
-  "documentNamespace": "https://spdx.org/spdxdocs/sfml-x64-windows-2.6.0#18-c701bca9-3928-4d2a-81b2-48ecf1679795",
-  "name": "sfml:x64-windows@2.6.0#18 db2d7b5c3d13821ee055db5ee66d5948bd48885d7c85770cea519a5858333cc6",
+  "documentNamespace": "https://spdx.org/spdxdocs/sfml-x64-windows-2.6.0#18-2c923a53-b8aa-4bda-aa6e-e2360e24b05c",
+  "name": "sfml:x64-windows@2.6.0#18 3676e2fe2f0882782d726e731c4f6552cb16660f6ee93ce8ff8e7a5a1f3edb7f",
   "creationInfo": {
     "creators": [
       "Tool: vcpkg-9990a4c9026811a312cb2af78bf77f3d9d288416"
     ],
-    "created": "2023-08-15T21:35:30Z"
+    "created": "2023-09-04T22:20:15Z"
   },
   "relationships": [
     {
@@ -68,7 +68,7 @@
       "name": "sfml",
       "SPDXID": "SPDXRef-port",
       "versionInfo": "2.6.0#18",
-      "downloadLocation": "git+https://github.com/Microsoft/vcpkg#ports/sfml",
+      "downloadLocation": "NOASSERTION",
       "homepage": "https://github.com/SFML/SFML",
       "licenseConcluded": "Zlib",
       "licenseDeclared": "NOASSERTION",
@@ -79,7 +79,7 @@
     {
       "name": "sfml:x64-windows",
       "SPDXID": "SPDXRef-binary",
-      "versionInfo": "db2d7b5c3d13821ee055db5ee66d5948bd48885d7c85770cea519a5858333cc6",
+      "versionInfo": "3676e2fe2f0882782d726e731c4f6552cb16660f6ee93ce8ff8e7a5a1f3edb7f",
       "downloadLocation": "NONE",
       "licenseConcluded": "Zlib",
       "licenseDeclared": "NOASSERTION",
@@ -103,7 +103,7 @@
   ],
   "files": [
     {
-      "fileName": "./C:/Users/kenne/SFML projects/MyGame/vcpkg/ports/sfml/fix-dependencies.patch",
+      "fileName": "./C:/src/vcpkg/ports/sfml/fix-dependencies.patch",
       "SPDXID": "SPDXRef-file-0",
       "checksums": [
         {
@@ -115,7 +115,7 @@
       "copyrightText": "NOASSERTION"
     },
     {
-      "fileName": "./C:/Users/kenne/SFML projects/MyGame/vcpkg/ports/sfml/portfile.cmake",
+      "fileName": "./C:/src/vcpkg/ports/sfml/portfile.cmake",
       "SPDXID": "SPDXRef-file-1",
       "checksums": [
         {
@@ -127,7 +127,7 @@
       "copyrightText": "NOASSERTION"
     },
     {
-      "fileName": "./C:/Users/kenne/SFML projects/MyGame/vcpkg/ports/sfml/usage",
+      "fileName": "./C:/src/vcpkg/ports/sfml/usage",
       "SPDXID": "SPDXRef-file-2",
       "checksums": [
         {
@@ -139,7 +139,7 @@
       "copyrightText": "NOASSERTION"
     },
     {
-      "fileName": "./C:/Users/kenne/SFML projects/MyGame/vcpkg/ports/sfml/vcpkg.json",
+      "fileName": "./C:/src/vcpkg/ports/sfml/vcpkg.json",
       "SPDXID": "SPDXRef-file-3",
       "checksums": [
         {

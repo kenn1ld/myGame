@@ -3,13 +3,13 @@
   "spdxVersion": "SPDX-2.2",
   "dataLicense": "CC0-1.0",
   "SPDXID": "SPDXRef-DOCUMENT",
-  "documentNamespace": "https://spdx.org/spdxdocs/libpng-x64-windows-1.6.39#1-9dc298a8-5a0e-4ba9-8ac0-30262d848126",
-  "name": "libpng:x64-windows@1.6.39#1 576476f5075a690ea8f6e38475f92946b957ab8a9fc1bc2436a921a5929c3194",
+  "documentNamespace": "https://spdx.org/spdxdocs/libpng-x64-windows-1.6.39#1-90efd8f1-388b-4189-836b-3a2765884efa",
+  "name": "libpng:x64-windows@1.6.39#1 9acd77746b1eec790b8112c8bd063aef8772488293b0b0872f3f0cc529a6bc44",
   "creationInfo": {
     "creators": [
       "Tool: vcpkg-9990a4c9026811a312cb2af78bf77f3d9d288416"
     ],
-    "created": "2023-08-15T21:33:42Z"
+    "created": "2023-09-04T22:19:18Z"
   },
   "relationships": [
     {
@@ -108,7 +108,7 @@
       "name": "libpng",
       "SPDXID": "SPDXRef-port",
       "versionInfo": "1.6.39#1",
-      "downloadLocation": "git+https://github.com/Microsoft/vcpkg#ports/libpng",
+      "downloadLocation": "NOASSERTION",
       "homepage": "https://github.com/glennrp/libpng",
       "licenseConcluded": "libpng-2.0",
       "licenseDeclared": "NOASSERTION",
@@ -119,7 +119,7 @@
     {
       "name": "libpng:x64-windows",
       "SPDXID": "SPDXRef-binary",
-      "versionInfo": "576476f5075a690ea8f6e38475f92946b957ab8a9fc1bc2436a921a5929c3194",
+      "versionInfo": "9acd77746b1eec790b8112c8bd063aef8772488293b0b0872f3f0cc529a6bc44",
       "downloadLocation": "NONE",
       "licenseConcluded": "libpng-2.0",
       "licenseDeclared": "NOASSERTION",
@@ -158,7 +158,7 @@
   ],
   "files": [
     {
-      "fileName": "./C:/Users/kenne/SFML projects/MyGame/vcpkg/ports/libpng/cmake.patch",
+      "fileName": "./C:/src/vcpkg/ports/libpng/cmake.patch",
       "SPDXID": "SPDXRef-file-0",
       "checksums": [
         {
@@ -170,7 +170,7 @@
       "copyrightText": "NOASSERTION"
     },
     {
-      "fileName": "./C:/Users/kenne/SFML projects/MyGame/vcpkg/ports/libpng/fix-export-targets.patch",
+      "fileName": "./C:/src/vcpkg/ports/libpng/fix-export-targets.patch",
       "SPDXID": "SPDXRef-file-1",
       "checksums": [
         {
@@ -182,7 +182,7 @@
       "copyrightText": "NOASSERTION"
     },
     {
-      "fileName": "./C:/Users/kenne/SFML projects/MyGame/vcpkg/ports/libpng/fix-msa-support-for-mips.patch",
+      "fileName": "./C:/src/vcpkg/ports/libpng/fix-msa-support-for-mips.patch",
       "SPDXID": "SPDXRef-file-2",
       "checksums": [
         {
@@ -194,7 +194,7 @@
       "copyrightText": "NOASSERTION"
     },
     {
-      "fileName": "./C:/Users/kenne/SFML projects/MyGame/vcpkg/ports/libpng/pkgconfig.patch",
+      "fileName": "./C:/src/vcpkg/ports/libpng/pkgconfig.patch",
       "SPDXID": "SPDXRef-file-3",
       "checksums": [
         {
@@ -206,7 +206,7 @@
       "copyrightText": "NOASSERTION"
     },
     {
-      "fileName": "./C:/Users/kenne/SFML projects/MyGame/vcpkg/ports/libpng/portfile.cmake",
+      "fileName": "./C:/src/vcpkg/ports/libpng/portfile.cmake",
       "SPDXID": "SPDXRef-file-4",
       "checksums": [
         {
@@ -218,7 +218,7 @@
       "copyrightText": "NOASSERTION"
     },
     {
-      "fileName": "./C:/Users/kenne/SFML projects/MyGame/vcpkg/ports/libpng/usage",
+      "fileName": "./C:/src/vcpkg/ports/libpng/usage",
       "SPDXID": "SPDXRef-file-5",
       "checksums": [
         {
@@ -230,7 +230,7 @@
       "copyrightText": "NOASSERTION"
     },
     {
-      "fileName": "./C:/Users/kenne/SFML projects/MyGame/vcpkg/ports/libpng/vcpkg-cmake-wrapper.cmake",
+      "fileName": "./C:/src/vcpkg/ports/libpng/vcpkg-cmake-wrapper.cmake",
       "SPDXID": "SPDXRef-file-6",
       "checksums": [
         {
@@ -242,7 +242,7 @@
       "copyrightText": "NOASSERTION"
     },
     {
-      "fileName": "./C:/Users/kenne/SFML projects/MyGame/vcpkg/ports/libpng/vcpkg.json",
+      "fileName": "./C:/src/vcpkg/ports/libpng/vcpkg.json",
       "SPDXID": "SPDXRef-file-7",
       "checksums": [
         {

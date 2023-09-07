@@ -1,86 +1,107 @@
 #include "AStar.h"
+#include <queue>
+#include <unordered_map>
+#include <cmath>
+#include <memory>
 #include "GameWorld.h"
 
-// A* class implementation
+enum MovementType {
+    WALKING,
+    JUMPING
+};
 
-AStar::AStar(const GameWorld& world) : world(world) {}
+namespace std {
+    template <>
+    struct hash<sf::Vector2<int>> {
+        std::size_t operator()(const sf::Vector2<int>& vec) const {
+            return std::hash<int>()(vec.x) ^ std::hash<int>()(vec.y);
+        }
+    };
+}
+
+struct Node {
+    sf::Vector2i position;
+    int g;
+    int h;
+    int f;
+    Node* parent;
+    MovementType movementType;
+
+    Node(sf::Vector2i pos, int g_val, int h_val, Node* par, MovementType moveType)
+        : position(pos), g(g_val), h(h_val), f(g + h), parent(par), movementType(moveType) {}
+
+    bool operator==(const Node& other) const {
+        return position == other.position;
+    }
+};
+
+struct NodeCompare {
+    bool operator()(const Node* a, const Node* b) const {
+        return a->f > b->f;
+    }
+};
+
+AStar::AStar(const GameWorld& world) : gameWorld(world) {}
 
 std::list<sf::Vector2i> AStar::findPath(const sf::Vector2i& start, const sf::Vector2i& goal) const {
-	NodeList openList;
-	NodeList closedList;
-	auto startNode = std::make_unique<Node>(start.x, start.y);
-	auto goalNode = std::make_unique<Node>(goal.x, goal.y);
-	openList.emplace_back(std::move(startNode));
+    std::priority_queue<Node*, std::vector<Node*>, NodeCompare> openSet;
+    std::unordered_map<sf::Vector2i, std::unique_ptr<Node>> allNodes;
 
-	while (!openList.empty()) {
-		auto iter = std::min_element(openList.begin(), openList.end(), [](const auto& a, const auto& b) {
-			return a->totalCost() < b->totalCost();
-			});
+    auto startNode = std::make_unique<Node>(start, 0, 0, nullptr, WALKING);
+    Node* startNodeRaw = startNode.get();
+    allNodes[start] = std::move(startNode);
+    openSet.push(startNodeRaw);
 
-		Node* currentNode = iter->get();
+    while (!openSet.empty()) {
+        Node* current = openSet.top();
+        openSet.pop();
 
-		if (currentNode->x == goalNode->x && currentNode->y == goalNode->y) {
-			std::list<sf::Vector2i> path = reconstructPath(currentNode);
-			return path;
-		}
+        if (current->position == goal) {
+            std::list<sf::Vector2i> path;
+            for (Node* temp = current; temp != nullptr; temp = temp->parent) {
+                path.push_front(temp->position);
+            }
+            return path;
+        }
 
-		closedList.emplace_back(std::move(*iter));
-		openList.erase(iter);
+        for (int dx = -1; dx <= 1; ++dx) {
+            for (int dy = -1; dy <= 1; ++dy) {
+                if (dx == 0 && dy == 0) continue;
 
-		NodeList successors = getSuccessors(currentNode);
+                int x = current->position.x + dx;
+                int y = current->position.y + dy;
 
-		for (auto& successor : successors) {
-			if (contains(closedList, successor->x, successor->y)) {
-				continue;
-			}
+                MovementType newMovementType = (dy == -1) ? JUMPING : WALKING;
 
-			float deltaX = static_cast<float>(successor->x) - static_cast<float>(goalNode->x);
-			float deltaY = static_cast<float>(successor->y) - static_cast<float>(goalNode->y);
-			successor->heuristic = std::abs(deltaX) + std::abs(deltaY);
+                if (gameWorld.isWalkable(x, y)) {
+                    int h = std::abs(x - goal.x) + std::abs(y - goal.y);
 
-			float tempCost = currentNode->cost + 1;
+                    int cost = 1;
+                    if (newMovementType != current->movementType) {
+                        cost = 10;
+                    }
 
-			if (!contains(openList, successor->x, successor->y) || tempCost < successor->cost) {
-				successor->parent = currentNode;
-				successor->cost = tempCost;
+                    auto neighbor = std::make_unique<Node>(sf::Vector2i(x, y), current->g + cost, h, current, newMovementType);
 
-				if (!contains(openList, successor->x, successor->y)) {
-					openList.emplace_back(std::move(successor));
-				}
-			}
-		}
-	}
+                    auto it = allNodes.find(neighbor->position);
+                    if (it != allNodes.end()) {
+                        Node* existingNeighbor = it->second.get();
+                        if (neighbor->g >= existingNeighbor->g) continue;
 
-	return {};
-}
-
-AStar::NodeList AStar::getSuccessors(const Node* node) const {
-	NodeList successors;
-	std::vector<sf::Vector2i> moves = { {0, -1}, {0, 1}, {-1, 0}, {1, 0} };
-
-	for (const auto& move : moves) {
-		int newX = node->x + move.x;
-		int newY = node->y + move.y;
-
-		if (world.isWalkable(newX, newY)) {
-			successors.emplace_back(std::make_unique<Node>(newX, newY));
-		}
-	}
-
-	return successors;
-}
-
-bool AStar::contains(const NodeList& list, int x, int y) const {
-	return std::find_if(list.begin(), list.end(), [x, y](const auto& node) {
-		return node->x == x && node->y == y;
-		}) != list.end();
-}
-
-std::list<sf::Vector2i> AStar::reconstructPath(Node* node) const {
-	std::list<sf::Vector2i> path;
-	while (node) {
-		path.push_front({ node->x, node->y });
-		node = node->parent;
-	}
-	return path;
+                        existingNeighbor->g = neighbor->g;
+                        existingNeighbor->h = neighbor->h;
+                        existingNeighbor->f = existingNeighbor->g + existingNeighbor->h;
+                        existingNeighbor->parent = current;
+                        existingNeighbor->movementType = newMovementType;
+                    }
+                    else {
+                        Node* neighborRaw = neighbor.get();
+                        allNodes[neighbor->position] = std::move(neighbor);
+                        openSet.push(neighborRaw);
+                    }
+                }
+            }
+        }
+    }
+    return {};
 }

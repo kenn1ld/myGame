@@ -3,13 +3,13 @@
   "spdxVersion": "SPDX-2.2",
   "dataLicense": "CC0-1.0",
   "SPDXID": "SPDXRef-DOCUMENT",
-  "documentNamespace": "https://spdx.org/spdxdocs/libvorbis-x64-windows-1.3.7#2-3c556e61-802c-4efa-af3c-f55203db6c63",
-  "name": "libvorbis:x64-windows@1.3.7#2 d961d8493c1e418d80098f09e0b5e7c158fde16e7b4d5c2e6feb70644bd7ae73",
+  "documentNamespace": "https://spdx.org/spdxdocs/libvorbis-x64-windows-1.3.7#2-3b55e227-5808-4eb2-863a-c5a4d5627e6c",
+  "name": "libvorbis:x64-windows@1.3.7#2 9132ae52e4a2d1c66982cc64f16eb4c53188a9306d9591a4145f80f95b19d9d4",
   "creationInfo": {
     "creators": [
       "Tool: vcpkg-9990a4c9026811a312cb2af78bf77f3d9d288416"
     ],
-    "created": "2023-08-15T21:34:23Z"
+    "created": "2023-09-04T22:18:51Z"
   },
   "relationships": [
     {
@@ -88,7 +88,7 @@
       "name": "libvorbis",
       "SPDXID": "SPDXRef-port",
       "versionInfo": "1.3.7#2",
-      "downloadLocation": "git+https://github.com/Microsoft/vcpkg#ports/libvorbis",
+      "downloadLocation": "NOASSERTION",
       "homepage": "https://github.com/xiph/vorbis",
       "licenseConcluded": "BSD-3-Clause",
       "licenseDeclared": "NOASSERTION",
@@ -99,7 +99,7 @@
     {
       "name": "libvorbis:x64-windows",
       "SPDXID": "SPDXRef-binary",
-      "versionInfo": "d961d8493c1e418d80098f09e0b5e7c158fde16e7b4d5c2e6feb70644bd7ae73",
+      "versionInfo": "9132ae52e4a2d1c66982cc64f16eb4c53188a9306d9591a4145f80f95b19d9d4",
       "downloadLocation": "NONE",
       "licenseConcluded": "BSD-3-Clause",
       "licenseDeclared": "NOASSERTION",
@@ -123,7 +123,7 @@
   ],
   "files": [
     {
-      "fileName": "./C:/Users/kenne/SFML projects/MyGame/vcpkg/ports/libvorbis/0001-Dont-export-vorbisenc-functions.patch",
+      "fileName": "./C:/src/vcpkg/ports/libvorbis/0001-Dont-export-vorbisenc-functions.patch",
       "SPDXID": "SPDXRef-file-0",
       "checksums": [
         {
@@ -135,7 +135,7 @@
       "copyrightText": "NOASSERTION"
     },
     {
-      "fileName": "./C:/Users/kenne/SFML projects/MyGame/vcpkg/ports/libvorbis/0002-Fixup-pkgconfig-libs.patch",
+      "fileName": "./C:/src/vcpkg/ports/libvorbis/0002-Fixup-pkgconfig-libs.patch",
       "SPDXID": "SPDXRef-file-1",
       "checksums": [
         {
@@ -147,7 +147,7 @@
       "copyrightText": "NOASSERTION"
     },
     {
-      "fileName": "./C:/Users/kenne/SFML projects/MyGame/vcpkg/ports/libvorbis/0003-def-mingw-compat.patch",
+      "fileName": "./C:/src/vcpkg/ports/libvorbis/0003-def-mingw-compat.patch",
       "SPDXID": "SPDXRef-file-2",
       "checksums": [
         {
@@ -159,7 +159,7 @@
       "copyrightText": "NOASSERTION"
     },
     {
-      "fileName": "./C:/Users/kenne/SFML projects/MyGame/vcpkg/ports/libvorbis/portfile.cmake",
+      "fileName": "./C:/src/vcpkg/ports/libvorbis/portfile.cmake",
       "SPDXID": "SPDXRef-file-3",
       "checksums": [
         {
@@ -171,7 +171,7 @@
       "copyrightText": "NOASSERTION"
     },
     {
-      "fileName": "./C:/Users/kenne/SFML projects/MyGame/vcpkg/ports/libvorbis/usage",
+      "fileName": "./C:/src/vcpkg/ports/libvorbis/usage",
       "SPDXID": "SPDXRef-file-4",
       "checksums": [
         {
@@ -183,7 +183,7 @@
       "copyrightText": "NOASSERTION"
     },
     {
-      "fileName": "./C:/Users/kenne/SFML projects/MyGame/vcpkg/ports/libvorbis/vcpkg.json",
+      "fileName": "./C:/src/vcpkg/ports/libvorbis/vcpkg.json",
       "SPDXID": "SPDXRef-file-5",
       "checksums": [
         {
